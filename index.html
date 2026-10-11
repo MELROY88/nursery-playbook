@@ -1,0 +1,1331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A ready-to-run social media playbook for UAE nurseries.">
+<style>img{max-width:100%}[hidden]{display:none!important}body{margin:0}</style>
+<title>The Nursery Social Playbook</title>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gluten:wght@500;700;800&family=Figtree:wght@400;500;600;700&family=Gochi+Hand&display=swap">
+<style>
+/* Layout: a white ruled exercise book page (single light look, by choice). Sections run like a nursery day, from Morning Register to the First 90 Days. */
+  :root{ color-scheme:light;
+  --paper:#FFFFFF; --rule:#D3E2F0; --margin:rgba(229,82,58,.15);
+  --ink:#1E2A44; --ink-soft:#4A5672; --card:#FFFFFF; --card-line:#1E2A44;
+  --sky:#2F86D6; --sun:#F2B41F; --tomato:#E5523A; --leaf:#2E9A62; --grape:#7F55C6; --pink:#E26A98;
+  --sky-t:#DCEBFA; --sun-t:#FDF0C9; --tomato-t:#FBE0DA; --leaf-t:#D9F1E3; --grape-t:#EAE1F8; --pink-t:#FADDE8;
+  --shadow:#1E2A44;
+  --display:"Gluten", "Comic Sans MS", "Chalkboard SE", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --hand:"Gochi Hand", "Comic Sans MS", "Bradley Hand", cursive;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.6;
+  background-image: repeating-linear-gradient(180deg, transparent 0 31px, var(--rule) 31px 32px);
+  background-attachment: local;
+}
+.wrap{max-width:1120px; margin:0 auto; padding-inline:clamp(16px,4vw,40px); padding-block:24px 80px}
+@media (max-width:640px){ body{background-image:repeating-linear-gradient(180deg, transparent 0 31px, var(--rule) 31px 32px)} }
+
+h1,h2,h3{font-family:var(--display); line-height:1.1; text-wrap:balance; margin:0; font-weight:700}
+h2{font-size:clamp(2rem,4.6vw,3rem)}
+h3{font-size:1.35rem}
+p{margin:0}
+.hand{font-family:var(--hand); font-size:1.3rem; line-height:1.3}
+.muted{color:var(--ink-soft)}
+a{color:var(--sky)}
+:focus-visible{outline:3px dashed var(--tomato); outline-offset:3px}
+svg{display:block}
+.tab{font-variant-numeric:tabular-nums}
+
+/* ---------- nav ---------- */
+.nav{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:var(--paper); border-bottom:2px dashed var(--rule); margin-inline:calc(-1 * clamp(16px,4vw,40px)); padding:10px clamp(16px,4vw,40px)}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block; white-space:nowrap; text-decoration:none; color:var(--ink); font-weight:600; font-size:.88rem; padding:6px 12px; border:2px solid var(--card-line); border-radius:999px; background:var(--card)}
+.nav a:hover{background:var(--sun-t)}
+
+/* ---------- hero ---------- */
+.hero{display:grid; grid-template-columns:1.25fr 1fr; gap:32px; align-items:center; padding-block:48px 40px}
+.hero > *{min-width:0}
+.kicker{display:inline-flex; gap:10px; align-items:center; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.8rem; color:var(--tomato)}
+.hero h1{font-size:clamp(2.6rem,6.6vw,4.9rem); margin-top:14px; font-weight:800}
+.hero h1 .scribble{position:relative; white-space:nowrap}
+.hero h1 .scribble svg{position:absolute; left:-4%; right:-4%; bottom:-.12em; width:108%; height:.4em}
+.hero .lede{font-size:1.2rem; margin-top:22px; max-width:56ch}
+.hero .note{margin-top:18px; color:var(--grape); transform:rotate(-2deg); display:inline-block}
+.hero-art{position:relative}
+.stamp-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+.stamp{font-family:var(--hand); font-size:1.15rem; padding:4px 14px; border:2px solid currentColor; border-radius:10px; transform:rotate(var(--r,0deg))}
+
+/* ---------- sections ---------- */
+section.block{padding-block:56px 8px; scroll-margin-top:70px}
+.sec-head{display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:end; margin-bottom:28px}
+.sec-head .badge{width:74px; height:74px; border-radius:22px; display:grid; place-items:center; border:2.5px solid var(--card-line); box-shadow:4px 4px 0 var(--shadow); transform:rotate(-4deg)}
+.sec-head .badge svg{width:44px; height:44px}
+.sec-head .time{font-family:var(--hand); font-size:1.25rem; color:var(--ink-soft)}
+.sec-intro{font-size:1.12rem; max-width:62ch; margin-top:6px}
+
+.card{background:var(--card); border:2.5px solid var(--card-line); border-radius:18px; padding:22px; box-shadow:5px 5px 0 var(--shadow)}
+.grid{display:grid; gap:18px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g6{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media (max-width:900px){ .g3,.g4,.g6{grid-template-columns:repeat(2,minmax(0,1fr))} .hero{grid-template-columns:1fr} }
+@media (max-width:560px){ .g2,.g3,.g4,.g6{grid-template-columns:1fr} }
+
+.tape{position:relative}
+.tape::before{content:""; position:absolute; top:-12px; left:50%; width:86px; height:24px; transform:translateX(-50%) rotate(-3deg); background:var(--sun); opacity:.55; border-radius:3px}
+
+ul.tick{list-style:none; padding:0; margin:12px 0 0; display:grid; gap:8px}
+ul.tick li{padding-left:28px; position:relative}
+ul.tick li::before{content:""; position:absolute; left:2px; top:.45em; width:14px; height:8px; border-left:3px solid var(--leaf); border-bottom:3px solid var(--leaf); transform:rotate(-45deg)}
+ul.cross li::before{border:none; content:"×"; font-weight:800; color:var(--tomato); top:-.05em; left:4px; font-size:1.3rem; transform:none}
+
+.chip{display:inline-block; font-size:.76rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:3px 10px; border-radius:999px; border:2px solid var(--card-line); background:var(--card)}
+.tag{display:inline-block; font-size:.8rem; font-weight:600; padding:2px 9px; border-radius:8px; background:var(--sky-t); color:var(--ink)}
+
+/* register (at a glance) */
+.register{display:grid; grid-template-columns:1.2fr 1fr; gap:22px}
+.register > *{min-width:0}
+@media (max-width:900px){ .register{grid-template-columns:1fr} }
+.big-q{display:grid; gap:12px; margin-top:14px}
+.big-q div{display:flex; gap:12px; align-items:center; font-weight:600}
+.big-q span.n{flex:none; width:34px; height:34px; border-radius:50%; display:grid; place-items:center; font-family:var(--display); color:#fff; font-size:1.05rem}
+
+/* personas */
+.persona h3{margin-top:10px}
+.persona .quote{font-family:var(--hand); font-size:1.25rem; color:var(--grape); margin-top:8px; line-height:1.25}
+.persona dl{margin:14px 0 0; display:grid; gap:8px; font-size:.95rem}
+.persona dt{font-weight:700; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft)}
+.persona dd{margin:0}
+.avatar{width:64px; height:64px}
+
+/* journey slide */
+.journey-wrap{overflow-x:auto}
+.journey{min-width:860px}
+
+/* blocks stack */
+.blocks{display:flex; height:84px; border:2.5px solid var(--card-line); border-radius:14px; overflow:hidden; box-shadow:5px 5px 0 var(--shadow)}
+.blocks div{display:flex; flex-direction:column; justify-content:center; padding:0 12px; border-right:2.5px solid var(--card-line); min-width:0}
+.blocks div:last-child{border-right:none}
+.blocks b{font-family:var(--display); font-size:1.5rem; line-height:1}
+.blocks small{font-size:.78rem; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+@media (max-width:640px){ .blocks{height:auto; flex-direction:column} .blocks div{border-right:none; border-bottom:2.5px solid var(--card-line); padding:10px 12px; flex-direction:row; justify-content:space-between; align-items:center} }
+
+.pillar{position:relative; padding-top:26px}
+.pillar .pct{position:absolute; top:-16px; right:16px; font-family:var(--display); font-size:1.3rem; background:var(--card); border:2.5px solid var(--card-line); border-radius:12px; padding:2px 10px; transform:rotate(4deg)}
+.pillar .ico{width:52px; height:52px; border-radius:14px; display:grid; place-items:center}
+.pillar .ico svg{width:32px; height:32px}
+.pillar h3{margin-top:12px}
+.pillar .proves{font-family:var(--hand); font-size:1.2rem; margin-top:4px; line-height:1.25}
+.pillar p.small{font-size:.94rem; margin-top:10px}
+
+/* platforms */
+.plat{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:start}
+.plat .ico{width:50px; height:50px; border-radius:50%; display:grid; place-items:center; border:2.5px solid var(--card-line)}
+.plat .ico svg{width:28px; height:28px}
+.role{font-family:var(--hand); font-size:1.2rem; color:var(--tomato); line-height:1.2}
+.tier{display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; margin:10px 0 14px}
+.tier h3{font-size:1.7rem}
+
+/* pegboard */
+.peg-row{display:grid; grid-template-columns:150px 1fr auto; gap:14px; align-items:center; padding:9px 0; border-bottom:2px dashed var(--rule)}
+.peg-row:last-child{border-bottom:none}
+.pegs{display:flex; gap:6px; flex-wrap:wrap}
+.peg{width:22px; height:22px; border-radius:50%; border:2.5px solid var(--card-line)}
+.peg.opt{background:transparent !important; border-style:dashed}
+@media (max-width:560px){ .peg-row{grid-template-columns:1fr; gap:6px} }
+
+/* timetable */
+.tt{display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:10px}
+.tt .day{border:2.5px solid var(--card-line); border-radius:16px; background:var(--card); overflow:hidden; display:flex; flex-direction:column}
+.tt .day header{padding:10px 12px; font-family:var(--display); font-size:1.15rem; border-bottom:2.5px solid var(--card-line)}
+.tt .day div{padding:10px 12px 14px; font-size:.9rem; display:grid; gap:6px}
+.tt .day b{font-size:.98rem}
+@media (max-width:1000px){ .tt{grid-template-columns:repeat(4,minmax(0,1fr))} }
+@media (max-width:560px){ .tt{grid-template-columns:1fr} }
+
+/* calendar */
+.cal{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px}
+@media (max-width:900px){ .cal{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:600px){ .cal{grid-template-columns:1fr} }
+.month{background:var(--card); border:2.5px solid var(--card-line); border-radius:18px; overflow:hidden; display:flex; flex-direction:column; box-shadow:4px 4px 0 var(--shadow)}
+.month header{display:flex; justify-content:space-between; align-items:center; padding:12px 16px; border-bottom:2.5px solid var(--card-line); gap:10px}
+.month header h3{font-size:1.5rem}
+.month .theme{font-family:var(--hand); font-size:1.15rem; line-height:1.2; text-align:right}
+.month .body{padding:14px 16px 16px; display:grid; gap:12px; font-size:.93rem}
+.dates{display:flex; flex-wrap:wrap; gap:6px}
+.date{display:inline-flex; gap:6px; align-items:baseline; font-size:.8rem; border:1.5px solid var(--card-line); border-radius:8px; padding:2px 8px; background:var(--paper)}
+.date b{font-variant-numeric:tabular-nums}
+.act{border-radius:12px; padding:10px 12px; border:2px dashed var(--card-line)}
+.act .lbl{font-size:.7rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase}
+.heat{display:flex; gap:4px; align-items:center; font-size:.75rem; font-weight:700; color:var(--ink-soft)}
+.heat i{width:14px; height:14px; border-radius:4px; border:2px solid var(--card-line); display:inline-block}
+
+/* chart */
+.chart-card svg text{fill:var(--ink); font-family:var(--body)}
+.chart-card svg .soft{fill:var(--ink-soft)}
+
+/* ideas */
+.filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px}
+.filters button,.btn{font:inherit; font-weight:700; font-size:.88rem; cursor:pointer; padding:7px 14px; border-radius:999px; border:2.5px solid var(--card-line); background:var(--card); color:var(--ink)}
+.filters button[aria-pressed="true"]{background:var(--ink); color:var(--paper)}
+.btn.big{font-family:var(--display); font-size:1.15rem; padding:10px 20px; background:var(--sun); color:#1E2A44; box-shadow:4px 4px 0 var(--shadow)}
+.btn.big:active{transform:translate(2px,2px); box-shadow:2px 2px 0 var(--shadow)}
+.idea-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; margin-top:18px}
+.idea{background:var(--card); border:2px solid var(--card-line); border-radius:14px; padding:14px 14px 12px; display:flex; flex-direction:column; gap:6px; position:relative}
+.idea .num{font-family:var(--display); font-size:.95rem; color:var(--ink-soft)}
+.idea h4{margin:0; font-size:1.02rem; line-height:1.25}
+.idea p{font-size:.88rem; color:var(--ink-soft)}
+.idea footer{display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:6px}
+.idea .fmt{font-size:.72rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase}
+.crayons{display:flex; gap:3px}
+.crayons i{width:7px; height:16px; border-radius:2px 2px 1px 1px; background:var(--rule); clip-path:polygon(0 30%,50% 0,100% 30%,100% 100%,0 100%)}
+.crayons i.on{background:var(--tomato)}
+.idea.flash{animation:wiggle .6s ease}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-2deg) scale(1.03)}75%{transform:rotate(2deg) scale(1.03)}}
+.pick{display:none; margin-top:16px}
+.pick.show{display:block}
+
+/* flow */
+.flow{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; counter-reset:f}
+.flow div{background:var(--card); border:2.5px solid var(--card-line); border-radius:16px; padding:14px; position:relative; font-size:.92rem}
+.flow div b{display:block; font-family:var(--display); font-size:1.15rem; margin-bottom:4px}
+.flow div:not(:last-child)::after{content:""; position:absolute; right:-14px; top:50%; width:14px; height:3px; background:var(--card-line)}
+@media (max-width:900px){ .flow{grid-template-columns:1fr 1fr} .flow div::after{display:none} }
+@media (max-width:560px){ .flow{grid-template-columns:1fr} }
+
+table.plain{width:100%; border-collapse:collapse; font-size:.94rem}
+table.plain th,table.plain td{text-align:left; padding:10px 12px; border-bottom:2px dashed var(--rule); vertical-align:top}
+table.plain th{font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft)}
+.tbl{overflow-x:auto}
+
+/* rules */
+.rule-card{border-left:none}
+.never{background:var(--tomato-t)}
+.always{background:var(--leaf-t)}
+
+/* report card */
+.report{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+@media (max-width:800px){ .report{grid-template-columns:1fr} }
+.grade-row{display:grid; grid-template-columns:1fr auto; gap:10px; padding:10px 0; border-bottom:2px dashed var(--rule); align-items:center}
+.grade{font-family:var(--hand); font-size:1.4rem; color:var(--tomato)}
+
+/* 90 days */
+.phase{display:grid; gap:10px}
+.phase label{display:flex; gap:10px; align-items:flex-start; cursor:pointer; font-size:.95rem}
+.phase input{width:20px; height:20px; accent-color:var(--leaf); flex:none; margin-top:3px}
+.phase label:has(input:checked) span{text-decoration:line-through; color:var(--ink-soft)}
+.progress{height:16px; border:2.5px solid var(--card-line); border-radius:999px; overflow:hidden; background:var(--card); margin-top:10px}
+.progress i{display:block; height:100%; width:0; background:var(--leaf); transition:width .3s}
+
+.foot{margin-top:70px; padding-top:24px; border-top:3px dashed var(--rule); font-size:.88rem; color:var(--ink-soft); display:grid; gap:10px}
+.foot a{color:var(--ink-soft)}
+
+@media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} }
+.float{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+</style>
+
+<!-- ICON SPRITE -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-safe" viewBox="0 0 32 32"><path d="M16 3 5 7v8c0 7 5 12 11 14 6-2 11-7 11-14V7z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M16 21s-5-3-5-6.5a2.6 2.6 0 0 1 5-1.2 2.6 2.6 0 0 1 5 1.2C21 18 16 21 16 21z" fill="currentColor"/></symbol>
+    <symbol id="i-learn" viewBox="0 0 32 32"><rect x="4" y="12" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="16" y="12" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="10" y="2" width="12" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M8 21l2-5 2 5M9 19.5h2M20 16h2.5a1.5 1.5 0 0 1 0 3H20v-3zm0 3h3a1.5 1.5 0 0 1 0 3h-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-grown" viewBox="0 0 32 32"><circle cx="16" cy="10" r="5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M6 28c1-6 5-9 10-9s9 3 10 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M22 4l1 2 2 .3-1.5 1.4.4 2.1L22 8.8 20.1 9.8l.4-2.1L19 6.3l2-.3z" fill="currentColor"/></symbol>
+    <symbol id="i-happy" viewBox="0 0 32 32"><ellipse cx="13" cy="11" rx="7" ry="8.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M13 19.5l-1.5 2.5h3z" fill="currentColor"/><path d="M13 22c0 3 4 3 4 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="23" cy="13" rx="5" ry="6" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M10 7.5a4 4 0 0 1 3-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-parent" viewBox="0 0 32 32"><path d="M4 15 16 5l12 10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 13v14h18V13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M16 24s-4.5-2.7-4.5-5.7a2.3 2.3 0 0 1 4.5-1 2.3 2.3 0 0 1 4.5 1c0 3-4.5 5.7-4.5 5.7z" fill="currentColor"/></symbol>
+    <symbol id="i-come" viewBox="0 0 32 32"><rect x="7" y="3" width="18" height="26" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M7 29h18" stroke="currentColor" stroke-width="2.4"/><circle cx="20.5" cy="17" r="1.8" fill="currentColor"/><path d="M11 8h10M11 12h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 32 32"><path d="M8 22V14a8 8 0 0 1 16 0v8l2 3H6z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M13 28a3 3 0 0 0 6 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-gate" viewBox="0 0 32 32"><path d="M4 28V8M28 28V8M4 12h24M4 20h24M10 12v16M16 12v16M22 12v16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/><circle cx="4" cy="6" r="2" fill="currentColor"/><circle cx="28" cy="6" r="2" fill="currentColor"/></symbol>
+    <symbol id="i-star" viewBox="0 0 32 32"><path d="M16 3l3.8 8 8.7 1.1-6.4 6 1.7 8.7L16 22.6 8.2 26.8l1.7-8.7-6.4-6 8.7-1.1z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-voice" viewBox="0 0 32 32"><path d="M5 6h22v15H14l-6 5v-5H5z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 12h12M10 16h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-slide" viewBox="0 0 32 32"><path d="M6 28V8h5v6M6 12h5M6 18h5M11 8c4 0 6 4 9 10s4 8 8 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 32 32"><rect x="4" y="6" width="24" height="22" rx="3" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M4 12h24M10 3v6M22 3v6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="11" cy="18" r="1.7" fill="currentColor"/><circle cx="16" cy="18" r="1.7" fill="currentColor"/><circle cx="21" cy="18" r="1.7" fill="currentColor"/><circle cx="11" cy="23" r="1.7" fill="currentColor"/></symbol>
+    <symbol id="i-box" viewBox="0 0 32 32"><path d="M4 12h24v15H4z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M4 12l4-6h16l4 6M13 17h6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="4" r="2" fill="currentColor"/><path d="M19 2l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-show" viewBox="0 0 32 32"><path d="M5 26h22M9 26V14M23 26V14M5 14h22l-3-6H8z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 18v4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-coin" viewBox="0 0 32 32"><ellipse cx="16" cy="9" rx="10" ry="4" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M6 9v7c0 2.2 4.5 4 10 4s10-1.8 10-4V9M6 16v7c0 2.2 4.5 4 10 4s10-1.8 10-4v-7" fill="none" stroke="currentColor" stroke-width="2.4"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 32 32"><path d="M16 4C9 4 4 8.5 4 14c0 3 1.4 5.6 3.8 7.4L7 27l5.3-2.8c1.2.3 2.4.5 3.7.5 7 0 12-4.5 12-10.2S23 4 16 4z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="11" cy="14" r="1.6" fill="currentColor"/><circle cx="16" cy="14" r="1.6" fill="currentColor"/><circle cx="21" cy="14" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-team" viewBox="0 0 32 32"><circle cx="10" cy="11" r="4" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="22" cy="11" r="4" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M3 26c.6-4.5 3.5-7 7-7s6.4 2.5 7 7M15 26c.6-4.5 3.5-7 7-7s6.4 2.5 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-report" viewBox="0 0 32 32"><path d="M7 3h13l6 6v20H7z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M11 23v-4M16 23v-8M21 23v-6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 32 32"><path d="M16 3c5 3 7 8 6 15H10C9 11 11 6 16 3z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="16" cy="11" r="2.4" fill="currentColor"/><path d="M10 15l-4 5 4 1M22 15l4 5-4 1M13 22l3 6 3-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 32 32"><rect x="5" y="5" width="22" height="22" rx="7" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="16" cy="16" r="5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="22.5" cy="9.5" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 32 32"><path d="M16 29s-9-8.5-9-15a9 9 0 0 1 18 0c0 6.5-9 15-9 15z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="16" cy="14" r="3.4" fill="currentColor"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M18 28V17h3l.5-3.5H18v-2c0-1 .4-1.7 1.8-1.7H22V6.7c-.6 0-1.6-.2-2.8-.2-2.8 0-4.6 1.7-4.6 4.8v2.2H12V17h2.6v10.6" fill="currentColor"/></symbol>
+    <symbol id="i-in" viewBox="0 0 32 32"><rect x="5" y="5" width="22" height="22" rx="4" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M11 14v8M11 10.5v.1M15.5 22v-8M15.5 17.5c0-2 1.3-3.6 3.2-3.6s2.8 1.3 2.8 3.4V22" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-tt" viewBox="0 0 32 32"><path d="M18 5v14.5a4.5 4.5 0 1 1-4.5-4.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M18 5c.5 3.5 3 6 6.5 6.3" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-yt" viewBox="0 0 32 32"><rect x="4" y="8" width="24" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M14 12.5v7l6-3.5z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+<nav class="nav" aria-label="Sections">
+  <ul>
+    <li><a href="#register">Register</a></li>
+    <li><a href="#why">Goal &amp; Objectives</a></li>
+    <li><a href="#gate">Parents</a></li>
+    <li><a href="#market">Market &amp; Competitors</a></li>
+    <li><a href="#stars">Goals</a></li>
+    <li><a href="#voice">Voice &amp; Pillars</a></li>
+    <li><a href="#playground">Platforms</a></li>
+    <li><a href="#formats">Formats</a></li>
+    <li><a href="#timetable">Weekly Rhythm</a></li>
+    <li><a href="#campaigns">Campaigns</a></li>
+    <li><a href="#year">Year Calendar</a></li>
+    <li><a href="#toybox">100 Ideas</a></li>
+    <li><a href="#show">Activations</a></li>
+    <li><a href="#friends">Influencers</a></li>
+    <li><a href="#money">Ads &amp; Budget</a></li>
+    <li><a href="#manners">Replies &amp; Reviews</a></li>
+    <li><a href="#rules">Safety Rules</a></li>
+    <li><a href="#team">Team &amp; Tools</a></li>
+    <li><a href="#reportcard">Report Card</a></li>
+    <li><a href="#ninety">First 90 Days</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div>
+    <span class="kicker"><svg width="18" height="18"><use href="#i-star"/></svg> Social media playbook · UAE nurseries · Calendar year 2027</span>
+    <h1>Parents don't follow nurseries. They follow <span class="scribble">proof.<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 40 4, 80 18, 120 9 S 180 6, 197 12" fill="none" stroke="var(--sun)" stroke-width="7" stroke-linecap="round"/></svg></span></h1>
+    <p class="lede">One plan any nursery can pick up and run: who we talk to, what we post, where, when, and how a "like" turns into a tour. Built for a small team, a sensible budget and a phone with a good camera.</p>
+    <p class="hand note">…and yes, there are craft videos. Obviously.</p>
+    <div class="stamp-row" aria-label="Plan in numbers">
+      <span class="stamp" style="color:var(--tomato);--r:-3deg">6 building blocks</span>
+      <span class="stamp" style="color:var(--sky);--r:2deg">12-month wall chart</span>
+      <span class="stamp" style="color:var(--leaf);--r:-1deg">100 post ideas</span>
+      <span class="stamp" style="color:var(--grape);--r:3deg">90-day start plan</span>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 420 380" width="100%">
+      <!-- sun -->
+      <g class="float">
+        <circle cx="330" cy="70" r="34" fill="var(--sun)" stroke="var(--card-line)" stroke-width="3"/>
+        <g stroke="var(--sun)" stroke-width="6" stroke-linecap="round">
+          <path d="M330 18v-12M330 134v-12M278 70h-12M394 70h-12M293 33l-8-8M375 115l-8-8M367 33l8-8M285 115l8-8"/>
+        </g>
+        <path d="M318 74c4 6 20 6 24 0" fill="none" stroke="var(--card-line)" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="319" cy="62" r="3" fill="var(--card-line)"/><circle cx="341" cy="62" r="3" fill="var(--card-line)"/>
+      </g>
+      <!-- paper plane + dotted path -->
+      <path d="M40 120 C 90 40, 170 150, 230 70" fill="none" stroke="var(--ink-soft)" stroke-width="2.5" stroke-dasharray="2 9" stroke-linecap="round"/>
+      <path d="M230 70l40-22-16 40-8-14z" fill="var(--card)" stroke="var(--card-line)" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M246 74l24-26" stroke="var(--card-line)" stroke-width="2"/>
+      <!-- blocks -->
+      <g stroke="var(--card-line)" stroke-width="3.5" stroke-linejoin="round">
+        <g transform="rotate(-6 120 300)"><rect x="60" y="240" width="110" height="110" rx="12" fill="var(--tomato)"/><text x="115" y="325" text-anchor="middle" font-family="Gluten, sans-serif" font-size="80" font-weight="800" fill="#fff" stroke="none">A</text></g>
+        <g transform="rotate(4 245 300)"><rect x="185" y="245" width="110" height="110" rx="12" fill="var(--sky)"/><text x="240" y="330" text-anchor="middle" font-family="Gluten, sans-serif" font-size="80" font-weight="800" fill="#fff" stroke="none">B</text></g>
+        <g transform="rotate(-3 180 190)"><rect x="125" y="135" width="110" height="110" rx="12" fill="var(--leaf)"/><text x="180" y="220" text-anchor="middle" font-family="Gluten, sans-serif" font-size="80" font-weight="800" fill="#fff" stroke="none">C</text></g>
+      </g>
+      <!-- crayon -->
+      <g transform="rotate(-28 345 300)" stroke="var(--card-line)" stroke-width="3" stroke-linejoin="round">
+        <rect x="300" y="285" width="90" height="26" rx="4" fill="var(--grape)"/>
+        <path d="M300 285l-26 13 26 13z" fill="var(--grape-t)"/>
+        <path d="M318 285v26M372 285v26" stroke="var(--card)" stroke-width="3"/>
+      </g>
+      <text x="252" y="190" font-family="Gochi Hand, cursive" font-size="24" fill="var(--ink-soft)" transform="rotate(-8 252 190)">trust → tours</text>
+    </svg>
+  </div>
+</header>
+
+<!-- 1 REGISTER -->
+<section class="block" id="register">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--sun-t);color:var(--ink)"><svg><use href="#i-bell"/></svg></div>
+    <div><p class="time">8:00 · Morning Register</p><h2>The plan on one page</h2></div>
+  </div>
+  <div class="register">
+    <div class="card">
+      <h3>Every post answers one of six questions</h3>
+      <p class="muted" style="margin-top:6px">Parents choosing a nursery are asking these, out loud or at 2am. If a post answers none of them, it doesn't go up.</p>
+      <div class="big-q">
+        <div><span class="n" style="background:var(--sky)">1</span>Is my child safe here?</div>
+        <div><span class="n" style="background:var(--tomato)">2</span>Will my child be happy?</div>
+        <div><span class="n" style="background:var(--grape)">3</span>Are the teachers kind and trained?</div>
+        <div><span class="n" style="background:var(--sun);color:#1E2A44">4</span>Will my child actually learn?</div>
+        <div><span class="n" style="background:var(--leaf)">5</span>Will I know what's going on?</div>
+        <div><span class="n" style="background:var(--pink)">6</span>Does it fit our family's life?</div>
+      </div>
+    </div>
+    <div class="grid" style="align-content:start">
+      <div class="card tape" style="background:var(--leaf-t)">
+        <h3>What we will do</h3>
+        <ul class="tick">
+          <li>Run 3 channels really well: Instagram, Google Business Profile, WhatsApp Business.</li>
+          <li>Post 6 times a week (weekends pre-scheduled), plus stories, from 6 content blocks.</li>
+          <li>Follow one 12-month calendar built on the UAE school year.</li>
+          <li>Reply to WhatsApp enquiries within 15 minutes in working hours.</li>
+          <li>Measure tours and enrolments, not just likes.</li>
+        </ul>
+      </div>
+      <div class="card" style="background:var(--tomato-t)">
+        <h3>What we won't do</h3>
+        <ul class="tick cross">
+          <li>Chase every new platform or dance trend.</li>
+          <li>Buy followers or run "like &amp; share to win" giveaways.</li>
+          <li>Post children whose parents haven't said yes in writing.</li>
+          <li>Make claims we can't show ("best nursery in Dubai").</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1b WHY -->
+<section class="block" id="why">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--tomato-t);color:var(--ink)"><svg><use href="#i-star"/></svg></div>
+    <div><p class="time">8:05 · Good Morning Song</p><h2>The goal, the promise and the ladder</h2></div>
+  </div>
+  <div class="grid g2">
+    <div class="card tape" style="background:var(--sun-t)">
+      <p class="chip">Overall goal</p>
+      <p style="font-family:var(--display);font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;margin-top:14px">Be the nursery local parents trust first, and recommend most.</p>
+      <p class="muted" style="margin-top:12px;font-size:.95rem">Social media's job is to earn that trust before the first visit, then make the visit easy to book.</p>
+    </div>
+    <div class="card">
+      <p class="chip">Positioning statement</p>
+      <p class="hand" style="font-size:1.45rem;margin-top:12px;color:var(--grape)">"A safe, joyful nursery where every child is known by name, and every parent knows how their day went."</p>
+      <p style="margin-top:12px;font-size:.92rem"><b>Make it your own:</b> For <u>families with children from __ months to __ years</u> in <u>your area</u>, <u>your nursery</u> is the nursery that <u>your one real difference</u>, because <u>the proof you can show</u>.</p>
+      <p class="muted" style="margin-top:8px;font-size:.88rem">Pick a difference you can film. "Small groups with one key teacher" is provable. "World-class education" is not.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:22px">
+    <h3>Business objectives: the seven-step ladder</h3>
+    <p class="muted" style="margin-top:4px">Every post, ad and reply pushes a family up one step. Each step has its own measure.</p>
+    <div style="overflow-x:auto;margin-top:14px">
+      <svg viewBox="0 0 980 330" style="min-width:820px" role="img" aria-label="Objective ladder from Awareness to Referrals">
+        <g font-family="Figtree, sans-serif" stroke="var(--card-line)" stroke-width="3" stroke-linejoin="round">
+          <rect x="10"  y="250" width="130" height="70"  rx="10" fill="var(--sky)"/>
+          <rect x="148" y="215" width="130" height="105" rx="10" fill="var(--sun)"/>
+          <rect x="286" y="180" width="130" height="140" rx="10" fill="var(--leaf)"/>
+          <rect x="424" y="145" width="130" height="175" rx="10" fill="var(--pink)"/>
+          <rect x="562" y="110" width="130" height="210" rx="10" fill="var(--grape)"/>
+          <rect x="700" y="75"  width="130" height="245" rx="10" fill="var(--tomato)"/>
+          <rect x="838" y="40"  width="130" height="280" rx="10" fill="var(--sky)"/>
+        </g>
+        <g font-family="Gluten, sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">
+          <text x="75" y="292">Awareness</text><text x="213" y="257" fill="#1E2A44">Trust</text><text x="351" y="222">Enquiries</text>
+          <text x="489" y="187">Tours</text><text x="627" y="152">Enrolments</text><text x="765" y="117">Loyalty</text><text x="903" y="82">Referrals</text>
+        </g>
+        <g font-family="Figtree, sans-serif" font-size="12.5" fill="var(--ink)" text-anchor="middle">
+          <text x="75" y="236">"They exist"</text>
+          <text x="213" y="201">"They're safe"</text>
+          <text x="351" y="166">"Let me ask"</text>
+          <text x="489" y="131">"Let me see"</text>
+          <text x="627" y="96">"We're in"</text>
+          <text x="765" y="61">"So glad we chose"</text>
+          <text x="903" y="26">"You should go there"</text>
+        </g>
+      </svg>
+    </div>
+    <div class="tbl" style="margin-top:10px">
+      <table class="plain">
+        <thead><tr><th>Step</th><th>What it means</th><th>Social media's job</th><th>We measure</th></tr></thead>
+        <tbody>
+          <tr><td><b>Awareness</b></td><td>Local parents know we exist</td><td>Reels, Google Maps profile, local ads</td><td>Reach near the branch, profile visits, map views</td></tr>
+          <tr><td><b>Trust</b></td><td>They believe we're safe and kind</td><td>Safe Hands, Our Grown-ups, reviews</td><td>Saves, shares, Google rating</td></tr>
+          <tr><td><b>Enquiries</b></td><td>They message or call</td><td>Clear WhatsApp buttons, lead forms</td><td>Enquiries by source</td></tr>
+          <tr><td><b>Tours</b></td><td>They visit</td><td>Fast replies with 2–3 tour slots</td><td>Tours booked and attended</td></tr>
+          <tr><td><b>Enrolments</b></td><td>They join</td><td>Follow-up within 24 hours, welcome content</td><td>Enrolments, tour-to-enrol rate</td></tr>
+          <tr><td><b>Loyalty</b></td><td>They stay and feel proud</td><td>Parent Corner, Happy Days, class moments</td><td>Re-enrolment, event turnout</td></tr>
+          <tr><td><b>Referrals</b></td><td>They bring friends</td><td>Review asks, Bring a Buddy, shareable posts</td><td>New reviews, referred enquiries</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 2 PARENTS -->
+<section class="block" id="gate">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--sky-t);color:var(--ink)"><svg><use href="#i-gate"/></svg></div>
+    <div><p class="time">8:15 · Who's at the Gate</p><h2>Know the parent</h2></div>
+  </div>
+  <p class="sec-intro">UAE parents are busy, multicultural and careful. They compare nurseries near home or along the commute, read Google reviews, ask friends in WhatsApp groups and judge you by how fast you reply. Grandparents and nannies often have a say too.</p>
+
+  <div class="grid g3" style="margin-top:24px">
+    <article class="card persona">
+      <svg class="avatar" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="var(--sky-t)" stroke="var(--card-line)" stroke-width="2.5"/><circle cx="32" cy="26" r="10" fill="var(--card)" stroke="var(--card-line)" stroke-width="2.5"/><path d="M14 54c3-9 10-13 18-13s15 4 18 13" fill="var(--sky)" stroke="var(--card-line)" stroke-width="2.5"/><circle cx="46" cy="16" r="5" fill="var(--sun)" stroke="var(--card-line)" stroke-width="2"/></svg>
+      <h3>The First-Timer</h3>
+      <p class="quote">"Is it normal that my baby cried at the door?"</p>
+      <dl><dt>Worries about</dt><dd>Crying, feeding, naps, hygiene, being judged.</dd><dt>Show them</dt><dd>Baby room, settling-in plan, the nurse, how teachers comfort.</dd><dt>Nudge</dt><dd>"Come for a calm visit at a quiet time."</dd></dl>
+    </article>
+    <article class="card persona">
+      <svg class="avatar" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="var(--sun-t)" stroke="var(--card-line)" stroke-width="2.5"/><circle cx="32" cy="26" r="10" fill="var(--card)" stroke="var(--card-line)" stroke-width="2.5"/><path d="M14 54c3-9 10-13 18-13s15 4 18 13" fill="var(--sun)" stroke="var(--card-line)" stroke-width="2.5"/><rect x="42" y="8" width="14" height="10" rx="2" fill="var(--card)" stroke="var(--card-line)" stroke-width="2"/><path d="M49 11v3l2 1" stroke="var(--card-line)" stroke-width="1.6" fill="none"/></svg>
+      <h3>The Juggler</h3>
+      <p class="quote">"Can you take her at 7:30 and send me one photo?"</p>
+      <dl><dt>Worries about</dt><dd>Timings, reliability, updates, mum-or-dad guilt.</dd><dt>Show them</dt><dd>A day in 60 seconds, the parent app, drop-off speed.</dd><dt>Nudge</dt><dd>"WhatsApp us for timings and spaces."</dd></dl>
+    </article>
+    <article class="card persona">
+      <svg class="avatar" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="var(--grape-t)" stroke="var(--card-line)" stroke-width="2.5"/><circle cx="32" cy="26" r="10" fill="var(--card)" stroke="var(--card-line)" stroke-width="2.5"/><path d="M26 25h4M34 25h4M30 25h4" stroke="var(--card-line)" stroke-width="2"/><path d="M14 54c3-9 10-13 18-13s15 4 18 13" fill="var(--grape)" stroke="var(--card-line)" stroke-width="2.5"/></svg>
+      <h3>The Researcher</h3>
+      <p class="quote">"I have a spreadsheet of nine nurseries."</p>
+      <dl><dt>Worries about</dt><dd>Curriculum, ratios, progress tracking, school readiness.</dd><dt>Show them</dt><dd>Activity-to-skill explainers, learning journals, staff training.</dd><dt>Nudge</dt><dd>"Book a curriculum tour with our manager."</dd></dl>
+    </article>
+    <article class="card persona">
+      <svg class="avatar" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="var(--leaf-t)" stroke="var(--card-line)" stroke-width="2.5"/><circle cx="32" cy="26" r="10" fill="var(--card)" stroke="var(--card-line)" stroke-width="2.5"/><path d="M14 54c3-9 10-13 18-13s15 4 18 13" fill="var(--leaf)" stroke="var(--card-line)" stroke-width="2.5"/><rect x="44" y="34" width="12" height="14" rx="2" fill="var(--sun)" stroke="var(--card-line)" stroke-width="2"/></svg>
+      <h3>The New Arrival</h3>
+      <p class="quote">"We landed last month. Where do we even start?"</p>
+      <dl><dt>Worries about</dt><dd>How UAE nurseries work, languages, making friends.</dd><dt>Show them</dt><dd>"New to the UAE" guides, community events, many cultures welcomed.</dd><dt>Nudge</dt><dd>"Save this guide, then message us."</dd></dl>
+    </article>
+    <article class="card persona">
+      <svg class="avatar" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="var(--pink-t)" stroke="var(--card-line)" stroke-width="2.5"/><circle cx="32" cy="26" r="10" fill="var(--card)" stroke="var(--card-line)" stroke-width="2.5"/><path d="M14 54c3-9 10-13 18-13s15 4 18 13" fill="var(--pink)" stroke="var(--card-line)" stroke-width="2.5"/><path d="M47 18s-5-3-5-6.2a2.5 2.5 0 0 1 5-1 2.5 2.5 0 0 1 5 1C52 15 47 18 47 18z" fill="var(--tomato)"/></svg>
+      <h3>The Advocate</h3>
+      <p class="quote">"My son needs a bit more support. Will you get him?"</p>
+      <dl><dt>Worries about</dt><dd>Being understood, speech, confidence, small groups.</dd><dt>Show them</dt><dd>How support works, who leads it, real (anonymous) approaches.</dd><dt>Nudge</dt><dd>"Talk privately with our inclusion lead."</dd></dl>
+    </article>
+    <article class="card persona" style="background:var(--sun-t)">
+      <svg class="avatar" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="var(--card)" stroke="var(--card-line)" stroke-width="2.5"/><path d="M20 40l12-18 12 18z" fill="var(--sun)" stroke="var(--card-line)" stroke-width="2.5" stroke-linejoin="round"/><circle cx="32" cy="46" r="2.5" fill="var(--card-line)"/></svg>
+      <h3>The quiet deciders</h3>
+      <p class="quote">Grandparents, nannies, the friend in the WhatsApp group.</p>
+      <dl><dt>Why they matter</dt><dd>They forward your post or your Google link. Make content easy to share: clear, kind, no jargon.</dd><dt>Bonus</dt><dd>Arabic captions on key posts widen who can pass it on.</dd></dl>
+    </article>
+  </div>
+
+  <div class="card" style="margin-top:28px">
+    <h3>The parent journey, drawn as the thing they know best</h3>
+    <p class="muted" style="margin-top:4px">Each rung is a question. Our content answers it, then hands them to the next rung.</p>
+    <div class="journey-wrap" style="margin-top:14px">
+      <svg class="journey" viewBox="0 0 980 300" role="img" aria-label="Parent journey: Notice, Trust, Compare, Ask, Visit, Join and Cheer, drawn as a playground slide">
+        <!-- ladder -->
+        <g stroke="var(--card-line)" stroke-width="4" stroke-linecap="round" fill="none">
+          <path d="M40 285 L110 40 M85 285 L155 40"/>
+          <path d="M57 225h44M74 165h44M91 105h44"/>
+          <path d="M110 40h70"/>
+          <path d="M155 40 C 260 40, 330 120, 430 180 S 640 270, 960 270"/>
+          <path d="M180 40 C 280 40, 350 112, 450 168 S 650 250, 960 250" stroke-dasharray="1 0"/>
+        </g>
+        <path d="M155 40 C 260 40, 330 120, 430 180 S 640 270, 960 270 L 960 250 C 650 250, 550 224, 450 168 S 280 40, 180 40 Z" fill="var(--sun)" opacity=".55"/>
+        <!-- stops -->
+        <g font-family="Figtree, sans-serif">
+          <g><circle cx="57" cy="250" r="18" fill="var(--sky)" stroke="var(--card-line)" stroke-width="3"/><text x="57" y="256" text-anchor="middle" font-weight="800" font-size="16" fill="#fff">1</text>
+            <text x="200" y="245" font-weight="800" font-size="18" fill="var(--ink)">Notice</text><text x="200" y="266" font-size="14" fill="var(--ink-soft)">"Which nurseries are near us?" · reels, Google Maps</text></g>
+          <g><circle cx="80" cy="165" r="18" fill="var(--tomato)" stroke="var(--card-line)" stroke-width="3"/><text x="80" y="171" text-anchor="middle" font-weight="800" font-size="16" fill="#fff">2</text></g>
+          <g><circle cx="102" cy="90" r="18" fill="var(--grape)" stroke="var(--card-line)" stroke-width="3"/><text x="102" y="96" text-anchor="middle" font-weight="800" font-size="16" fill="#fff">3</text></g>
+          <text x="200" y="150" font-weight="800" font-size="18" fill="var(--ink)">Trust</text><text x="200" y="171" font-size="14" fill="var(--ink-soft)">"Are they safe and kind?"</text>
+          <text x="200" y="88" font-weight="800" font-size="18" fill="var(--ink)">Compare</text><text x="200" y="109" font-size="14" fill="var(--ink-soft)">"Why this one?"</text>
+          <g><circle cx="430" cy="180" r="18" fill="var(--leaf)" stroke="var(--card-line)" stroke-width="3"/><text x="430" y="186" text-anchor="middle" font-weight="800" font-size="16" fill="#fff">4</text>
+            <text x="455" y="128" font-weight="800" font-size="18" fill="var(--ink)">Ask</text><text x="455" y="149" font-size="14" fill="var(--ink-soft)">WhatsApp · call · form</text></g>
+          <g><circle cx="600" cy="236" r="18" fill="var(--pink)" stroke="var(--card-line)" stroke-width="3"/><text x="600" y="242" text-anchor="middle" font-weight="800" font-size="16" fill="#fff">5</text>
+            <text x="620" y="190" font-weight="800" font-size="18" fill="var(--ink)">Visit</text><text x="620" y="211" font-size="14" fill="var(--ink-soft)">tour · open morning</text></g>
+          <g><circle cx="770" cy="256" r="18" fill="var(--sky)" stroke="var(--card-line)" stroke-width="3"/><text x="770" y="262" text-anchor="middle" font-weight="800" font-size="16" fill="#fff">6</text>
+            <text x="700" y="214" font-weight="800" font-size="18" fill="var(--ink)">Join</text><text x="700" y="235" font-size="14" fill="var(--ink-soft)">settling-in, welcome</text></g>
+          <g><circle cx="925" cy="260" r="18" fill="var(--tomato)" stroke="var(--card-line)" stroke-width="3"/><text x="925" y="266" text-anchor="middle" font-weight="800" font-size="16" fill="#fff">7</text>
+            <text x="975" y="196" text-anchor="end" font-weight="800" font-size="18" fill="var(--ink)">Cheer</text><text x="975" y="217" text-anchor="end" font-size="14" fill="var(--ink-soft)">reviews · referrals</text></g>
+        </g>
+        <text x="300" y="30" font-family="Gochi Hand, cursive" font-size="22" fill="var(--grape)">the slow climb… then the fun bit ↘</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 2b MARKET -->
+<section class="block" id="market">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--leaf-t);color:var(--ink)"><svg><use href="#i-pin"/></svg></div>
+    <div><p class="time">8:30 · Look Around the Neighbourhood</p><h2>The UAE market, and the nursery next door</h2></div>
+  </div>
+  <p class="sec-intro">The market is crowded, diverse and online. A parent can shortlist five nurseries on Google Maps in two minutes, so the nursery that looks real, reviewed and quick to reply wins the visit.</p>
+
+  <div class="grid g4" style="margin-top:22px">
+    <div class="card" style="background:var(--sky-t)"><p style="font-family:var(--display);font-size:2.6rem;line-height:1" class="tab">312</p><p style="margin-top:8px;font-weight:600">early childhood centres in Dubai</p><p class="muted" style="font-size:.85rem;margin-top:4px">38 new ones opened in a single year. Competition is close by.</p></div>
+    <div class="card" style="background:var(--sun-t)"><p style="font-family:var(--display);font-size:2.6rem;line-height:1" class="tab">163</p><p style="margin-top:8px;font-weight:600">nationalities in Dubai's nurseries</p><p class="muted" style="font-size:.85rem;margin-top:4px">Nearly half of centres serve 20+ nationalities. Speak to many cultures.</p></div>
+    <div class="card" style="background:var(--leaf-t)"><p style="font-family:var(--display);font-size:2.6rem;line-height:1" class="tab">29,600+</p><p style="margin-top:8px;font-weight:600">children enrolled, up 8%</p><p class="muted" style="font-size:.85rem;margin-top:4px">Demand is growing. 17 curricula, with EYFS the most common.</p></div>
+    <div class="card" style="background:var(--pink-t)"><p style="font-family:var(--display);font-size:2.6rem;line-height:1" class="tab">99%</p><p style="margin-top:8px;font-weight:600">of UAE residents online</p><p class="muted" style="font-size:.85rem;margin-top:4px">Instagram ads can reach about 8 million people in the UAE; Facebook about 9.7 million.</p></div>
+  </div>
+  <p class="muted" style="font-size:.82rem;margin-top:10px">Dubai figures: KHDA via Dubai Media Office, academic year 2024–25. UAE digital figures: DataReportal, late 2025. Other emirates have their own regulators and numbers.</p>
+
+  <div class="grid g3" style="margin-top:22px">
+    <div class="card"><h3>What's shaping choices</h3><ul class="tick"><li>Google Maps and reviews are the first shortlist.</li><li>WhatsApp is how families expect to talk to you.</li><li>Short real videos beat polished brochures.</li><li>Many languages at home; Arabic and English matter most.</li></ul></div>
+    <div class="card"><h3>What's changing</h3><ul class="tick"><li>Child Digital Safety Law in force since January 2026.</li><li>Paid creators now need a Media Council permit.</li><li>2026 is the UAE's Year of the Family, so family content fits the mood.</li><li>New nurseries keep opening, so standing out matters more.</li></ul></div>
+    <div class="card"><h3>Got several branches?</h3><ul class="tick"><li>One main Instagram, but a Google profile and WhatsApp number per branch.</li><li>Tag the branch location on every post.</li><li>Each branch shows its own teachers, rooms and reviews.</li><li>Report numbers per branch, not only in total.</li></ul></div>
+  </div>
+
+  <div class="card" style="margin-top:22px">
+    <h3>The competitor check (do it in month 1, repeat every 6 months)</h3>
+    <p style="margin-top:6px">Pick 3–5 nurseries a parent would compare you with: same area, similar fees, similar curriculum or age range. Score each from 1 to 5. Score yourself honestly too.</p>
+    <div class="tbl" style="margin-top:10px">
+      <table class="plain">
+        <thead><tr><th>What to check</th><th>How</th><th>You</th><th>A</th><th>B</th><th>C</th></tr></thead>
+        <tbody>
+          <tr><td><b>Google rating &amp; reviews</b></td><td>Stars, number of reviews, how they reply, what parents praise or complain about</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><td><b>Reply speed</b></td><td>Send a normal enquiry on WhatsApp and time the answer</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><td><b>Posting habit</b></td><td>Posts per week over the last month, and gaps</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><td><b>Real or stock?</b></td><td>Their own rooms and teachers, or stock photos and templates</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><td><b>Trust proof</b></td><td>Do they show safety, hygiene, staff training, the nurse?</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><td><b>Teachers seen</b></td><td>Are staff named and shown, or invisible?</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><td><b>Learning shown</b></td><td>Activities explained, or just cute photos?</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><td><b>Engagement</b></td><td>Real parent comments, or only likes?</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><td><b>Easy next step</b></td><td>Bio link, WhatsApp button, highlights, tour booking</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><td><b>Ads running</b></td><td>Look them up in the free Meta Ad Library</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="hand" style="margin-top:12px;color:var(--grape)">The prize: find what nobody nearby shows well, then own it. If no one films their safety routine, film yours.</p>
+  </div>
+</section>
+
+<!-- 3 GOALS -->
+<section class="block" id="stars">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--sun-t);color:var(--ink)"><svg><use href="#i-star"/></svg></div>
+    <div><p class="time">8:45 · The Gold Star Chart</p><h2>Goals we can actually reach</h2></div>
+  </div>
+  <p class="sec-intro">Month 1 is for measuring where we stand today (the baseline). Every target below is set against that, per branch. A small nursery and a five-branch group should not chase the same number.</p>
+  <div class="tbl card" style="margin-top:22px;padding:8px 10px">
+    <table class="plain tab">
+      <thead><tr><th>Gold star</th><th>6-month target</th><th>How we count it</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td><b>Fast replies</b></td><td>WhatsApp answered within 15 min in working hours</td><td>WhatsApp Business chat times, weekly spot-check</td><td>A slow reply loses the parent to the next nursery on their list.</td></tr>
+        <tr><td><b>More enquiries</b></td><td>+25% vs. month-1 baseline</td><td>Lead tracker, with the source of every enquiry</td><td>The number that pays the bills.</td></tr>
+        <tr><td><b>Tours booked</b></td><td>At least half of enquiries book a visit</td><td>Lead tracker status "tour booked"</td><td>Shows the follow-up is working.</td></tr>
+        <tr><td><b>Google reviews</b></td><td>4+ new reviews a month per branch, rating 4.7 or higher</td><td>Google Business Profile</td><td>Often the first thing a parent reads, before your Instagram.</td></tr>
+        <tr><td><b>Saves &amp; shares</b></td><td>Rising month on month</td><td>Instagram Insights per post</td><td>Parents save what's useful and share what they trust.</td></tr>
+        <tr><td><b>Turning up</b></td><td>100% of the planned posts go out</td><td>Calendar ticks</td><td>Consistency beats one viral post.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="hand" style="margin-top:14px;color:var(--grape)">Followers aren't on the chart. A nursery with 2,000 local followers and a full waiting list is winning.</p>
+</section>
+
+<!-- 4 VOICE & PILLARS -->
+<section class="block" id="voice">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--grape-t);color:var(--ink)"><svg><use href="#i-voice"/></svg></div>
+    <div><p class="time">9:00 · Circle Time</p><h2>Our voice and six building blocks</h2></div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3>We sound like…</h3>
+      <p style="margin-top:8px">The teacher every parent hopes for: warm, calm, sure of what she's doing, and a little bit funny. Short sentences. No jargon. No shouting in capitals.</p>
+      <div class="grid g2" style="margin-top:14px;gap:12px">
+        <div style="background:var(--leaf-t);border-radius:12px;padding:12px"><p class="chip" style="background:var(--leaf);color:#fff;border-color:var(--leaf)">Say</p><p class="hand" style="margin-top:8px">"Every child settles in their own time. Here's how we help."</p></div>
+        <div style="background:var(--tomato-t);border-radius:12px;padding:12px"><p class="chip" style="background:var(--tomato);color:#fff;border-color:var(--tomato)">Not</p><p class="hand" style="margin-top:8px">"ADMISSIONS OPEN!!! LIMITED SEATS!!! BEST NURSERY!!!"</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>The proof rule</h3>
+      <p style="margin-top:8px">Every claim needs something a parent can see.</p>
+      <table class="plain" style="margin-top:6px">
+        <thead><tr><th>Instead of saying</th><th>Show</th></tr></thead>
+        <tbody>
+          <tr><td>"We're safe"</td><td>The real drop-off, filmed from the parent's side</td></tr>
+          <tr><td>"Caring staff"</td><td>A teacher explaining how she comforts a new child</td></tr>
+          <tr><td>"We follow EYFS"</td><td>One activity and the skill it builds</td></tr>
+          <tr><td>"Spotless"</td><td>The evening clean in a 15-second timelapse</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="margin-top:40px;font-size:1.7rem">The six building blocks</h3>
+  <p class="muted" style="margin-top:4px">Every post belongs to one block. The stack shows how a normal month is split.</p>
+  <div class="blocks" style="margin-top:16px" role="img" aria-label="Monthly content split: Little Learners 25%, Safe Hands 20%, Our Grown-ups 15%, Parent Corner 15%, Happy Days 15%, Come and See 10%">
+    <div style="flex:25;background:var(--sun-t)"><b>25%</b><small>Little Learners</small></div>
+    <div style="flex:20;background:var(--sky-t)"><b>20%</b><small>Safe Hands</small></div>
+    <div style="flex:15;background:var(--grape-t)"><b>15%</b><small>Our Grown-ups</small></div>
+    <div style="flex:15;background:var(--leaf-t)"><b>15%</b><small>Parent Corner</small></div>
+    <div style="flex:15;background:var(--tomato-t)"><b>15%</b><small>Happy Days</small></div>
+    <div style="flex:10;background:var(--pink-t)"><b>10%</b><small>Come &amp; See</small></div>
+  </div>
+
+  <div class="grid g3" style="margin-top:34px;row-gap:34px">
+    <div class="card pillar"><span class="pct">25%</span><div class="ico" style="background:var(--sun-t);color:var(--ink)"><svg><use href="#i-learn"/></svg></div><h3>Little Learners</h3><p class="proves" style="color:var(--sun)">proves: "they'll learn"</p><p class="small">Play with a purpose. Every activity names the skill it builds: fine motor, early maths, language, school readiness.</p></div>
+    <div class="card pillar"><span class="pct">20%</span><div class="ico" style="background:var(--sky-t);color:var(--ink)"><svg><use href="#i-safe"/></svg></div><h3>Safe Hands</h3><p class="proves" style="color:var(--sky)">proves: "they're safe"</p><p class="small">Drop-off, pick-up, hygiene, the nurse, meals, naps, heat safety. The "invisible work" parents never see.</p></div>
+    <div class="card pillar"><span class="pct">15%</span><div class="ico" style="background:var(--grape-t);color:var(--ink)"><svg><use href="#i-grown"/></svg></div><h3>Our Grown-ups</h3><p class="proves" style="color:var(--grape)">proves: "the teachers are kind"</p><p class="small">Teachers, assistants, nurse, chef, manager. Names, training, why they love this job. People trust people.</p></div>
+    <div class="card pillar"><span class="pct">15%</span><div class="ico" style="background:var(--leaf-t);color:var(--ink)"><svg><use href="#i-parent"/></svg></div><h3>Parent Corner</h3><p class="proves" style="color:var(--leaf)">proves: "they'll keep me in the loop"</p><p class="small">Useful tips, the parent app, workshops, inclusion and support. The posts parents save.</p></div>
+    <div class="card pillar"><span class="pct">15%</span><div class="ico" style="background:var(--tomato-t);color:var(--ink)"><svg><use href="#i-happy"/></svg></div><h3>Happy Days</h3><p class="proves" style="color:var(--tomato)">proves: "they'll be happy"</p><p class="small">Celebrations, UAE moments, sports day, graduation, everyday giggles. The posts parents share.</p></div>
+    <div class="card pillar"><span class="pct">10%</span><div class="ico" style="background:var(--pink-t);color:var(--ink)"><svg><use href="#i-come"/></svg></div><h3>Come &amp; See</h3><p class="proves" style="color:var(--pink)">proves: "it fits our life"</p><p class="small">Spaces, timings, ages, reviews, open mornings, the soft "come visit". Kept to 1 post in 10.</p></div>
+  </div>
+</section>
+
+<!-- 5 PLATFORMS -->
+<section class="block" id="playground">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--leaf-t);color:var(--ink)"><svg><use href="#i-slide"/></svg></div>
+    <div><p class="time">10:00 · Outdoor Play</p><h2>Where we play</h2></div>
+  </div>
+  <p class="sec-intro">Three channels do the heavy lifting. Two support them. One is optional. Doing three well beats doing six badly.</p>
+
+  <div class="tier"><h3>The big three</h3><span class="hand muted">non-negotiable</span></div>
+  <div class="grid g3">
+    <div class="card plat"><div class="ico" style="background:var(--pink-t)"><svg><use href="#i-ig"/></svg></div><div><h3>Instagram</h3><p class="role">the window into the classroom</p><p style="margin-top:8px;font-size:.95rem">Reels, carousels, daily-ish stories. Highlights set up as a mini website: Tour, Safety, Learning, Team, Reviews, FAQs, Admissions.</p></div></div>
+    <div class="card plat"><div class="ico" style="background:var(--sky-t)"><svg><use href="#i-pin"/></svg></div><div><h3>Google Business Profile</h3><p class="role">the shop sign on Maps</p><p style="margin-top:8px;font-size:.95rem">Where "nursery near me" lands. Fresh photos monthly, a weekly update post, correct hours, every review answered.</p></div></div>
+    <div class="card plat"><div class="ico" style="background:var(--leaf-t)"><svg><use href="#i-chat"/></svg></div><div><h3>WhatsApp Business</h3><p class="role">the front desk</p><p style="margin-top:8px;font-size:.95rem">Every "Book a visit" button ends here. Greeting message, quick replies, labels (New, Tour booked, Enrolled), away message.</p></div></div>
+  </div>
+
+  <div class="tier" style="margin-top:28px"><h3>The helpers</h3><span class="hand muted">low effort, real value</span></div>
+  <div class="grid g3">
+    <div class="card plat"><div class="ico" style="background:var(--sky-t)"><svg><use href="#i-fb"/></svg></div><div><h3>Facebook</h3><p class="role">the community notice board</p><p style="margin-top:8px;font-size:.95rem">Cross-post from Instagram through Meta Business Suite. Create Events for open mornings. Needed anyway for Meta ads.</p></div></div>
+    <div class="card plat"><div class="ico" style="background:var(--grape-t)"><svg><use href="#i-in"/></svg></div><div><h3>LinkedIn</h3><p class="role">the staff room</p><p style="margin-top:8px;font-size:.95rem">One post a week: training, hiring, awards, leadership. Attracts good teachers and corporate partners.</p></div></div>
+    <div class="card plat" style="border-style:dashed"><div class="ico" style="background:var(--sun-t)"><svg><use href="#i-tt"/></svg></div><div><h3>TikTok · YouTube Shorts</h3><p class="role">optional, only if time allows</p><p style="margin-top:8px;font-size:.95rem">Re-upload the best teacher-tip reels. Teacher-led and hands-only. No children's faces on these open-reach apps.</p></div></div>
+  </div>
+
+  <div class="card chart-card" style="margin-top:28px">
+    <h3>The pegboard: posts per week</h3>
+    <p class="muted" style="margin-top:4px">One peg = one post. Dashed pegs are optional.</p>
+    <div style="margin-top:12px">
+      <div class="peg-row"><b>Instagram feed</b><div class="pegs"><i class="peg" style="background:var(--pink)"></i><i class="peg" style="background:var(--pink)"></i><i class="peg" style="background:var(--pink)"></i><i class="peg" style="background:var(--pink)"></i><i class="peg" style="background:var(--pink)"></i><i class="peg" style="background:var(--pink)"></i></div><span class="muted tab">6 (Sat &amp; Sun pre-scheduled; Friday is stories only)</span></div>
+      <div class="peg-row"><b>Instagram stories</b><div class="pegs"><i class="peg" style="background:var(--sun)"></i><i class="peg" style="background:var(--sun)"></i><i class="peg" style="background:var(--sun)"></i><i class="peg" style="background:var(--sun)"></i><i class="peg" style="background:var(--sun)"></i></div><span class="muted tab">5 days, 2–4 frames a day</span></div>
+      <div class="peg-row"><b>Facebook</b><div class="pegs"><i class="peg" style="background:var(--sky)"></i><i class="peg" style="background:var(--sky)"></i><i class="peg" style="background:var(--sky)"></i><i class="peg" style="background:var(--sky)"></i><i class="peg" style="background:var(--sky)"></i><i class="peg" style="background:var(--sky)"></i></div><span class="muted tab">6 (cross-posted, zero extra work)</span></div>
+      <div class="peg-row"><b>Google Business</b><div class="pegs"><i class="peg" style="background:var(--leaf)"></i></div><span class="muted tab">1 update + new photos</span></div>
+      <div class="peg-row"><b>LinkedIn</b><div class="pegs"><i class="peg" style="background:var(--grape)"></i></div><span class="muted tab">1</span></div>
+      <div class="peg-row"><b>TikTok / Shorts</b><div class="pegs"><i class="peg opt"></i><i class="peg opt"></i></div><span class="muted tab">0–2 re-uploads</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5b FORMATS -->
+<section class="block" id="formats">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--pink-t);color:var(--ink)"><svg><use href="#i-ig"/></svg></div>
+    <div><p class="time">10:15 · The Craft Table</p><h2>Which format for which job</h2></div>
+  </div>
+  <p class="sec-intro">Each format does one job best. Pick the job first, then the format.</p>
+  <div class="grid g4" style="margin-top:22px">
+    <div class="card"><p class="chip" style="background:var(--tomato-t)">Reel</p><h3 style="margin-top:10px">Reach &amp; feelings</h3><p style="margin-top:6px;font-size:.92rem">15–30 seconds. Movement in the first 2 seconds. Subtitles always. Best for: a day in 60 seconds, activities, teacher moments, events.</p></div>
+    <div class="card"><p class="chip" style="background:var(--leaf-t)">Carousel</p><h3 style="margin-top:10px">Saves &amp; learning</h3><p style="margin-top:6px;font-size:.92rem">5–8 slides, one idea per slide, the last slide asks "Save this". Best for: tips, checklists, explainers, settling-in plans.</p></div>
+    <div class="card"><p class="chip" style="background:var(--sun-t)">Story</p><h3 style="margin-top:10px">Daily warmth</h3><p style="margin-top:6px;font-size:.92rem">No polish needed. Polls, quizzes, countdowns, the lunch menu, "today we…". Keeps you top of mind without filling the grid.</p></div>
+    <div class="card"><p class="chip" style="background:var(--sky-t)">Photo</p><h3 style="margin-top:10px">Clear messages</h3><p style="margin-top:6px;font-size:.92rem">One strong picture, one message. Best for: review cards, open-morning invites, teacher of the week, announcements.</p></div>
+    <div class="card"><p class="chip" style="background:var(--grape-t)">Live</p><h3 style="margin-top:10px">Trust &amp; expertise</h3><p style="margin-top:6px;font-size:.92rem">Once a month, 20 minutes. Story time, ask the nurse, school-readiness Q&amp;A. Save the recording to your profile.</p></div>
+    <div class="card"><p class="chip" style="background:var(--pink-t)">Highlights</p><h3 style="margin-top:10px">The mini website</h3><p style="margin-top:6px;font-size:.92rem">Tour · Safety · Learning · Team · Reviews · FAQs · Admissions. Refresh covers once a term.</p></div>
+    <div class="card"><p class="chip" style="background:var(--leaf-t)">Pinned posts</p><h3 style="margin-top:10px">The first impression</h3><p style="margin-top:6px;font-size:.92rem">Pin 3 posts to the top: the tour reel, the safety reel and your best parent review. That's what new visitors see first.</p></div>
+    <div class="card"><p class="chip" style="background:var(--sun-t)">Collab post</p><h3 style="margin-top:10px">Borrowed reach</h3><p style="margin-top:6px;font-size:.92rem">One post, shown on both accounts. Use it with partners: the dentist's tips, a bookshop's story time, a parent creator's visit.</p></div>
+  </div>
+</section>
+
+<!-- 6 TIMETABLE -->
+<section class="block" id="timetable">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--tomato-t);color:var(--ink)"><svg><use href="#i-cal"/></svg></div>
+    <div><p class="time">10:30 · The Weekly Timetable</p><h2>Same rhythm, every week</h2></div>
+  </div>
+  <p class="sec-intro">Themed days mean nobody stares at a blank screen. The nursery is closed on Saturday and Sunday, but parents are on their phones and planning. So the weekend still gets posts: they are made during the week and scheduled in advance.</p>
+  <div class="tt" style="margin-top:22px">
+    <div class="day"><header style="background:var(--sun-t)">Mon</header><div><b>Make &amp; Learn</b><span>Activity reel + the skill it builds</span><span class="tag" style="background:var(--sun-t)">Little Learners</span></div></div>
+    <div class="day"><header style="background:var(--grape-t)">Tue</header><div><b>Teacher Tuesday</b><span>Meet a grown-up, 3 quick questions</span><span class="tag" style="background:var(--grape-t)">Our Grown-ups</span></div></div>
+    <div class="day"><header style="background:var(--leaf-t)">Wed</header><div><b>Wise Wednesday</b><span>A parent tip carousel worth saving</span><span class="tag" style="background:var(--leaf-t)">Parent Corner</span></div></div>
+    <div class="day"><header style="background:var(--sky-t)">Thu</header><div><b>Behind the Gate</b><span>Safety, hygiene, a room or routine</span><span class="tag" style="background:var(--sky-t)">Safe Hands</span></div></div>
+    <div class="day"><header style="background:var(--tomato-t)">Fri</header><div><b>Friday Smiles</b><span>Story montage of the week's best bits</span><span class="tag" style="background:var(--tomato-t)">Happy Days</span></div></div>
+    <div class="day"><header style="background:var(--pink-t)">Sat <span class="hand" style="font-size:.9rem">· closed, scheduled</span></header><div><b>Come &amp; See</b><span>Tour clip, review card or open-morning invite. Families plan visits at weekends.</span><span class="tag" style="background:var(--pink-t)">Come &amp; See</span></div></div>
+    <div class="day"><header style="background:var(--leaf-t)">Sun <span class="hand" style="font-size:.9rem">· closed, scheduled</span></header><div><b>Weekend at Home</b><span>A simple play idea to try at home, or "this week in 5 photos".</span><span class="tag" style="background:var(--leaf-t)">Parent Corner</span></div></div>
+  </div>
+  <div class="grid g3" style="margin-top:20px">
+    <div class="card"><h3>When to post</h3><p style="margin-top:6px;font-size:.95rem">Weekdays: 7–8am before drop-off, 1–2pm lunch break, 8:30–10pm after bedtime. Weekends: late morning. After 4 weeks, use your own Instagram Insights instead. Film during normal activities, never stage a lesson for the camera.</p></div>
+    <div class="card"><h3>Stories, made easy</h3><p style="margin-top:6px;font-size:.95rem">Polls ("Pasta or rice day?"), quizzes, a "today we…" photo, the lunch menu, countdowns to events. Stories don't need polish. They need to exist.</p></div>
+    <div class="card"><h3>Weekends, sorted</h3><p style="margin-top:6px;font-size:.95rem">On Thursday, schedule Saturday and Sunday posts in Meta Business Suite. Set a WhatsApp away message, and have admissions check messages twice a day (around 11am and 7pm). Weekend enquiries get a tour slot by Monday morning.</p></div>
+  </div>
+</section>
+
+<!-- 6b CAMPAIGNS -->
+<section class="block" id="campaigns">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--sun-t);color:var(--ink)"><svg><use href="#i-voice"/></svg></div>
+    <div><p class="time">10:45 · The Big Projects</p><h2>Eight named campaigns for the year</h2></div>
+  </div>
+  <p class="sec-intro">A campaign gives a few weeks of posts one name, one look and one ask. Parents remember a name; they forget random posts. Run one or two at a time, never all eight.</p>
+  <div class="grid g4" style="margin-top:22px" id="camps"></div>
+</section>
+
+<!-- 7 YEAR CALENDAR -->
+<section class="block" id="year">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--sky-t);color:var(--ink)"><svg><use href="#i-cal"/></svg></div>
+    <div><p class="time">11:00 · The Big Wall Chart</p><h2>A year of themes and activations</h2></div>
+  </div>
+  <p class="sec-intro">January to December 2027, with the UAE moments, world days and school dates a nursery should mark. Islamic dates follow the moon, so they are marked "expected": confirm them nearer the time. Dates after August follow the usual school pattern; check the 2027–28 calendar when it is announced. The admissions dial shows how hard to push "come visit" that month.</p>
+  <div class="heat" style="margin-top:12px;gap:10px;flex-wrap:wrap"><span>Dates:</span><span class="date" style="border-left:5px solid var(--leaf)">UAE</span><span class="date" style="border-left:5px solid var(--sky)">World day</span><span class="date" style="border-left:5px solid var(--grape)">Faith &amp; culture</span><span class="date" style="border-left:5px solid var(--sun)">School</span></div>
+  <div class="heat" style="margin-top:8px;gap:10px;flex-wrap:wrap"><span>Admissions dial:</span><span style="display:inline-flex;gap:4px;align-items:center"><i style="background:var(--leaf)"></i>gentle</span><span style="display:inline-flex;gap:4px;align-items:center"><i style="background:var(--sun)"></i>steady</span><span style="display:inline-flex;gap:4px;align-items:center"><i style="background:var(--tomato)"></i>peak push</span></div>
+  <div class="cal" id="cal" style="margin-top:20px"></div>
+
+  <div class="card chart-card" style="margin-top:30px">
+    <h3>Where the ad money goes across the year</h3>
+    <p class="muted" style="margin-top:4px">Example for the "Growth" budget (AED 36,000 a year). Money follows the moments parents are deciding: January to March for September places, and late summer for families who just arrived.</p>
+    <div style="overflow-x:auto;margin-top:10px"><svg id="budgetChart" viewBox="0 0 760 290" style="min-width:600px" role="img" aria-label="Monthly ad budget, AED"></svg></div>
+  </div>
+</section>
+
+<!-- 8 IDEAS -->
+<section class="block" id="toybox">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--pink-t);color:var(--ink)"><svg><use href="#i-box"/></svg></div>
+    <div><p class="time">11:45 · The Toy Box</p><h2>100 post ideas, ready to film</h2></div>
+  </div>
+  <p class="sec-intro">Filter by building block, or let the toy box pick one for you. Crayons show effort: one crayon is a phone and five minutes, three crayons needs planning.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:18px">
+    <button class="btn big" id="pickBtn" type="button">Pick one for me</button>
+    <span class="hand muted" id="countLbl">Showing all 100</span>
+  </div>
+  <div class="pick card" id="pickCard" aria-live="polite"></div>
+  <div class="filters" id="filters" style="margin-top:18px" role="group" aria-label="Filter ideas"></div>
+  <div class="idea-grid" id="ideas"></div>
+</section>
+
+<!-- 9 ACTIVATIONS -->
+<section class="block" id="show">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--sun-t);color:var(--ink)"><svg><use href="#i-show"/></svg></div>
+    <div><p class="time">12:30 · Show &amp; Tell</p><h2>Twelve low-cost activations</h2></div>
+  </div>
+  <p class="sec-intro">Real-world moments that create content, reviews and visits. All of them can be run by the nursery team. Costs are rough guides for one branch.</p>
+  <div class="grid g3" style="margin-top:22px" id="acts"></div>
+</section>
+
+<!-- 9b FRIENDS -->
+<section class="block" id="friends">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--grape-t);color:var(--ink)"><svg><use href="#i-team"/></svg></div>
+    <div><p class="time">1:00 · Playdates</p><h2>Influencers and partners</h2></div>
+  </div>
+  <p class="sec-intro">For a nursery, trust beats follower count. A local mum with 6,000 followers who lives five minutes away is worth more than a celebrity with 600,000 in another country.</p>
+
+  <div class="grid g3" style="margin-top:22px">
+    <div class="card"><p class="chip" style="background:var(--pink-t)">Parent creators</p><h3 style="margin-top:10px">Mums &amp; dads who post</h3><p style="margin-top:6px;font-size:.92rem">An honest tour, their first impressions, an open morning visit. Best if they have a child of nursery age.</p></div>
+    <div class="card"><p class="chip" style="background:var(--sun-t)">Family lifestyle</p><h3 style="margin-top:10px">Whole-family accounts</h3><p style="margin-top:6px;font-size:.92rem">Weekend events, sports day, graduation-style moments. Warm, real, child-safe tone.</p></div>
+    <div class="card"><p class="chip" style="background:var(--leaf-t)">Micro &amp; nano (1k–20k)</p><h3 style="margin-top:10px">Parents near the branch</h3><p style="margin-top:6px;font-size:.92rem">Best value by far. Their followers are your neighbours. Often happy with an experience rather than a big fee.</p></div>
+    <div class="card"><p class="chip" style="background:var(--sky-t)">Language &amp; community</p><h3 style="margin-top:10px">Arabic and expat voices</h3><p style="margin-top:6px;font-size:.92rem">Arabic-speaking creators for Emirati and Arab families; others for the communities your branch serves.</p></div>
+    <div class="card"><p class="chip" style="background:var(--grape-t)">Experts</p><h3 style="margin-top:10px">Child health &amp; development</h3><p style="margin-top:6px;font-size:.92rem">Paediatricians, paediatric dentists, speech therapists, nutritionists. Licensed only. Perfect for lives and workshops.</p></div>
+    <div class="card"><p class="chip" style="background:var(--tomato-t)">Educator creators</p><h3 style="margin-top:10px">Early-years teachers online</h3><p style="margin-top:6px;font-size:.92rem">Play ideas and learning tips. They lend credibility to your curriculum posts.</p></div>
+  </div>
+
+  <div class="grid g2" style="margin-top:22px">
+    <div class="card" style="background:var(--leaf-t)">
+      <h3>How to choose (the scorecard)</h3>
+      <ul class="tick">
+        <li><b>Permit first:</b> a valid UAE Media Council advertiser permit. No permit, no deal.</li>
+        <li><b>Local audience:</b> ask for a screenshot of their audience by city.</li>
+        <li><b>Real comments</b> from real parents, not just emojis.</li>
+        <li><b>Child-safe content:</b> respectful with their own children.</li>
+        <li><b>Values fit:</b> nothing you'd be embarrassed to stand next to.</li>
+        <li><b>Not an advert wall:</b> few paid posts, so their word still counts.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>House rules for every visit</h3>
+      <ul class="tick">
+        <li>They film their own child only. Other children are never shown.</li>
+        <li>The nursery sees the content before it goes live.</li>
+        <li>Paid posts are clearly marked as ads or paid partnerships.</li>
+        <li>No fee claims or "best nursery" promises.</li>
+        <li>A short written agreement: what, when, how much, who approves.</li>
+      </ul>
+      <p class="hand muted" style="margin-top:10px">Where to find them: who your current parents already follow, local parent groups, community pages, and the Media Council's list of approved agencies.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:22px">
+    <h3>Partners worth a coffee</h3>
+    <p class="muted" style="margin-top:4px">Shared audiences, zero ad spend. Each can become a workshop, a collab post or a giveaway that isn't "like &amp; share".</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+      <span class="tag" style="background:var(--sky-t)">Paediatric clinics</span><span class="tag" style="background:var(--sun-t)">Paediatric dentists</span><span class="tag" style="background:var(--leaf-t)">Speech therapists</span><span class="tag" style="background:var(--pink-t)">Child nutritionists</span><span class="tag" style="background:var(--grape-t)">Bookshops</span><span class="tag" style="background:var(--tomato-t)">Toy shops</span><span class="tag" style="background:var(--sky-t)">Swimming schools</span><span class="tag" style="background:var(--sun-t)">Music &amp; dance classes</span><span class="tag" style="background:var(--leaf-t)">Kids' sports academies</span><span class="tag" style="background:var(--pink-t)">Family photographers</span><span class="tag" style="background:var(--grape-t)">Residential communities</span><span class="tag" style="background:var(--tomato-t)">Malls &amp; family events</span><span class="tag" style="background:var(--sky-t)">Company HR teams</span><span class="tag" style="background:var(--sun-t)">Relocation consultants</span>
+    </div>
+  </div>
+</section>
+
+<!-- 10 ADS -->
+<section class="block" id="money">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--leaf-t);color:var(--ink)"><svg><use href="#i-coin"/></svg></div>
+    <div><p class="time">1:30 · Pocket Money</p><h2>Ads, on a sensible budget</h2></div>
+  </div>
+  <p class="sec-intro">Organic posts build trust. A small, steady ad budget makes sure local parents actually see them. Start small, measure cost per tour, then grow what works.</p>
+  <div class="grid g3" style="margin-top:22px">
+    <div class="card"><p class="chip">Starter</p><h3 style="margin-top:10px;font-size:1.8rem" class="tab">AED 1,000–2,000<span style="font-size:1rem" class="muted"> / month</span></h3><p style="margin-top:8px;font-size:.95rem">Boost the best 2 reels each month to parents within a few kilometres. One click-to-WhatsApp ad running all the time.</p></div>
+    <div class="card" style="background:var(--sun-t)"><p class="chip">Growth · recommended</p><h3 style="margin-top:10px;font-size:1.8rem" class="tab">AED 2,500–4,500<span style="font-size:1rem" class="muted"> / month</span></h3><p style="margin-top:8px;font-size:.95rem">Starter, plus open-morning campaigns, retargeting people who watched your reels, and Google Search ads for "nursery + your area".</p></div>
+    <div class="card"><p class="chip">Peak months</p><h3 style="margin-top:10px;font-size:1.8rem" class="tab">+50%<span style="font-size:1rem" class="muted"> Jan–Mar, Aug</span></h3><p style="margin-top:8px;font-size:.95rem">Lift spend when parents are deciding for September, and when new families arrive in late summer.</p></div>
+  </div>
+  <div class="flow" style="margin-top:26px">
+    <div><b>See</b>Reel of real classroom life, shown to parents near the branch</div>
+    <div><b>Remember</b>Retarget people who watched it with a teacher or safety clip</div>
+    <div><b>Message</b>Click-to-WhatsApp: "Hi! My child is __ months. Can we visit?"</div>
+    <div><b>Visit</b>Admissions offers two tour slots in the first reply</div>
+    <div><b>Count</b>Log the source, the tour and the outcome in the tracker</div>
+  </div>
+  <div class="grid g2" style="margin-top:22px">
+    <div class="card"><h3>Targeting that works for nurseries</h3><ul class="tick"><li>Location: a radius around the branch, plus nearby communities and office clusters.</li><li>People: adults likely to be parents of young children. Meta limits detailed targeting, so let good creative and location do the work.</li><li>Languages: English plus Arabic versions of the best ads. Add other languages your families speak.</li><li>Exclude current parents where possible, so the budget goes to new families.</li></ul></div>
+    <div class="card"><h3>Ad creative rules</h3><ul class="tick"><li>Real teachers and real rooms beat stock photos every time.</li><li>First 2 seconds: movement and a face (a teacher's, not a child's, if consent is in doubt).</li><li>Subtitles on every video. Most people watch on mute.</li><li>One message per ad. One button. Ideally "Send WhatsApp message".</li><li>Prices and offers must match your regulator-approved fees.</li></ul></div>
+  </div>
+</section>
+
+<!-- 11 MANNERS -->
+<section class="block" id="manners">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--grape-t);color:var(--ink)"><svg><use href="#i-chat"/></svg></div>
+    <div><p class="time">2:30 · Manners Matter</p><h2>Replies, enquiries and reviews</h2></div>
+  </div>
+  <p class="sec-intro">A beautiful feed with slow replies is a shop with a locked door. This section is the part that turns interest into tours.</p>
+  <div class="grid g2" style="margin-top:22px">
+    <div class="card tbl" style="padding:10px 12px">
+      <h3 style="padding:6px 6px 0">Reply promises</h3>
+      <table class="plain">
+        <thead><tr><th>Where</th><th>How fast</th><th>Tone</th></tr></thead>
+        <tbody>
+          <tr><td><b>WhatsApp</b></td><td class="tab">15 min (working hours)</td><td>Warm, direct, offer a visit</td></tr>
+          <tr><td><b>Instagram DMs</b></td><td class="tab">Within 2 working hours</td><td>Friendly, move to WhatsApp</td></tr>
+          <tr><td><b>Comments</b></td><td>Same day</td><td>Short, kind, never argue</td></tr>
+          <tr><td><b>Lead forms</b></td><td>Same day, call first</td><td>Admissions-led</td></tr>
+          <tr><td><b>Google reviews</b></td><td class="tab">Within 48 hours</td><td>Thank, personal, never defensive</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>The first WhatsApp reply</h3>
+      <div style="margin-top:12px;background:var(--leaf-t);border-radius:16px 16px 16px 4px;padding:14px;font-size:.95rem">
+        Hello and thank you for messaging us! 😊 I'm Sara from the admissions team.<br><br>
+        To help you best, could you share:<br>1. Your child's age<br>2. Preferred start date<br>3. Which branch is closest to you<br><br>
+        We'd love to show you around. We have tour slots on <b>Tuesday 10am</b> or <b>Thursday 4pm</b>. Which suits you?
+      </div>
+      <p class="hand muted" style="margin-top:10px">Save it as a quick reply. Change the name and slots, keep the warmth.</p>
+    </div>
+  </div>
+  <div class="flow" style="margin-top:20px">
+    <div><b>1 · Reply</b>Within 15 minutes, warm and personal</div>
+    <div><b>2 · Ask</b>Child's age, start date, nearest branch</div>
+    <div><b>3 · Offer</b>2–3 real tour slots, never "come anytime"</div>
+    <div><b>4 · Remind</b>A friendly message the day before</div>
+    <div><b>5 · Follow up</b>Within 24 hours after the tour. Undecided? One useful guide a week later, then give them space.</div>
+  </div>
+  <div class="grid g3" style="margin-top:20px">
+    <div class="card"><h3>Getting reviews</h3><p style="margin-top:6px;font-size:.95rem">Ask at happy moments: after the first parent meeting, after a great event, at graduation. Send the direct Google review link by WhatsApp. Never offer gifts in exchange for reviews.</p></div>
+    <div class="card"><h3>Handling a bad review</h3><p style="margin-top:6px;font-size:.95rem">Reply within 48 hours: thank them, say sorry for the experience, invite them to talk to the manager directly. No details about any child in public. Then fix the real issue.</p></div>
+    <div class="card"><h3>Joining the conversation</h3><p style="margin-top:6px;font-size:.95rem">Ten minutes a day commenting helpfully on local parent pages, community pages and partner accounts. Helpful, not salesy. A good tip is the best advert.</p></div>
+  </div>
+</section>
+
+<!-- 12 RULES -->
+<section class="block" id="rules">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--sky-t);color:var(--ink)"><svg><use href="#i-safe"/></svg></div>
+    <div><p class="time">3:00 · Safe Hands Rules</p><h2>Child safety and UAE rules</h2></div>
+  </div>
+  <p class="sec-intro">This is the section that protects the children, the families and the licence. Print it and stick it in the staff room.</p>
+  <div class="grid g2" style="margin-top:22px">
+    <div class="card always">
+      <h3>Always</h3>
+      <ul class="tick">
+        <li>Get written photo consent at enrolment, with 3 clear options: <b>public social media</b>, <b>private parent channels only</b>, or <b>no photos</b>. Parents can change it anytime.</li>
+        <li>Keep a staff-only "photo list" per class so everyone knows who can appear.</li>
+        <li>Film on nursery-owned devices only. Upload to secure storage weekly, then delete from the phone.</li>
+        <li>Have a second person check every post with children before it goes live.</li>
+        <li>Check any paid influencer or creator holds a valid UAE Media Council advertiser permit.</li>
+        <li>Show award names and years exactly as given. Match all fee information to your regulator-approved fees.</li>
+      </ul>
+    </div>
+    <div class="card never">
+      <h3>Never</h3>
+      <ul class="tick cross">
+        <li>Children's full names, birthdays with names, or anything that identifies home or family.</li>
+        <li>Nappy changing, toileting, bathing, swimwear, sleeping faces or children upset.</li>
+        <li>Any detail about a child's health, behaviour or support needs.</li>
+        <li>Live location tags during trips or outings. Post afterwards.</li>
+        <li>Photos of children whose parents said no, even in the background. Blur or crop.</li>
+        <li>Staff personal phones or personal accounts posting nursery children.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" style="margin-top:20px">
+    <h3>Why this matters in the UAE</h3>
+    <ul class="tick" style="margin-top:10px">
+      <li>Posting someone's photo without consent can break Article 44 of the UAE Cybercrimes Law. Penalties include fines of AED 150,000 to 500,000.</li>
+      <li>Wadeema's Law (Federal Law No. 3 of 2016) gives every child a right to privacy. The PDPL generally requires consent to use personal data.</li>
+      <li>The Child Digital Safety Law (Federal Decree-Law No. 26 of 2025) came into force on 1 January 2026 and warns caregivers against harmful "sharenting".</li>
+      <li>Since 2025, people posting promotional content in the UAE need a Media Council advertiser permit. It's free, so ask to see it.</li>
+      <li>Your emirate's education regulator (for example KHDA in Dubai, ADEK in Abu Dhabi) sets fee and licensing rules. Check with them before any fee-linked offer.</li>
+    </ul>
+    <p class="hand muted" style="margin-top:12px">This is a practical guide, not legal advice. Ask your regulator or a lawyer when unsure.</p>
+  </div>
+</section>
+
+<!-- 13 TEAM -->
+<section class="block" id="team">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--tomato-t);color:var(--ink)"><svg><use href="#i-team"/></svg></div>
+    <div><p class="time">3:30 · Who Does What</p><h2>Team, tools and the weekly routine</h2></div>
+  </div>
+  <div class="grid g3" style="margin-top:6px">
+    <div class="card"><h3>Social lead</h3><p class="hand" style="color:var(--tomato)">1 person, part-time or in-house</p><p style="margin-top:6px;font-size:.95rem">Plans, edits, posts, replies to comments, sends the monthly report. About 10–15 hours a week for one branch.</p></div>
+    <div class="card"><h3>Content champions</h3><p class="hand" style="color:var(--sky)">1 teacher per class</p><p style="margin-top:6px;font-size:.95rem">Captures 3 short clips or photos a week during normal activities, from the photo list. Ten minutes, not ten hours.</p></div>
+    <div class="card"><h3>Admissions</h3><p class="hand" style="color:var(--leaf)">the closer</p><p style="margin-top:6px;font-size:.95rem">Owns WhatsApp, books tours, updates the lead tracker the same day. The most important person in this plan.</p></div>
+  </div>
+  <div class="card" style="margin-top:20px">
+    <h3>The toolkit (mostly free)</h3>
+    <div class="tbl"><table class="plain" style="margin-top:6px">
+      <thead><tr><th>Job</th><th>Tool</th><th>Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Schedule Instagram + Facebook, inbox, insights</td><td>Meta Business Suite</td><td>Free</td></tr>
+        <tr><td>Design posts, templates, brand kit</td><td>Canva</td><td>Free or Pro plan</td></tr>
+        <tr><td>Edit reels, auto-subtitles</td><td>CapCut or Instagram's own editor</td><td>Free</td></tr>
+        <tr><td>Enquiries, quick replies, labels</td><td>WhatsApp Business app</td><td>Free</td></tr>
+        <tr><td>Maps listing, reviews, posts</td><td>Google Business Profile</td><td>Free</td></tr>
+        <tr><td>Lead tracker and content calendar</td><td>Google Sheets</td><td>Free</td></tr>
+        <tr><td>Filming</td><td>One nursery-owned smartphone + a small tripod and clip-on mic</td><td>One-off purchase</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="flow" style="margin-top:20px">
+    <div><b>Plan</b>Thursday: schedule the weekend, plan next week's posts</div>
+    <div><b>Capture</b>Champions film during real activities</div>
+    <div><b>Make</b>Social lead edits and writes captions</div>
+    <div><b>Check</b>Manager approves anything showing children</div>
+    <div><b>Post &amp; reply</b>Schedule, then reply every day</div>
+  </div>
+</section>
+
+<!-- 14 REPORT CARD -->
+<section class="block" id="reportcard">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--sun-t);color:var(--ink)"><svg><use href="#i-report"/></svg></div>
+    <div><p class="time">4:00 · Report Card</p><h2>One page, once a month</h2></div>
+  </div>
+  <div class="report" style="margin-top:6px">
+    <div class="card">
+      <h3>The five numbers that matter</h3>
+      <div class="grade-row"><span><b>Enquiries</b>, and where they came from</span><span class="grade">A+?</span></div>
+      <div class="grade-row"><span><b>Tours booked</b> and how many turned up</span><span class="grade">B?</span></div>
+      <div class="grade-row"><span><b>Enrolments</b> from those tours</span><span class="grade">A?</span></div>
+      <div class="grade-row"><span><b>Google</b> rating and new reviews</span><span class="grade">★?</span></div>
+      <div class="grade-row"><span><b>Reply time</b> on WhatsApp</span><span class="grade">⏱?</span></div>
+      <p class="muted" style="margin-top:10px;font-size:.92rem">Plus content signals: reach, saves, shares and messages per post. Saves and messages tell you more than likes.</p>
+    </div>
+    <div class="card" style="background:var(--grape-t)">
+      <h3>Teacher's comments</h3>
+      <p style="margin-top:6px">End every report with four short lines:</p>
+      <div class="grid" style="margin-top:12px;gap:10px">
+        <p class="hand"><b style="font-family:var(--body);font-size:.95rem">Keep:</b> the 3 posts that brought messages</p>
+        <p class="hand"><b style="font-family:var(--body);font-size:.95rem">Stop:</b> the 3 posts nobody noticed</p>
+        <p class="hand"><b style="font-family:var(--body);font-size:.95rem">Try:</b> one new idea next month</p>
+        <p class="hand"><b style="font-family:var(--body);font-size:.95rem">Boost:</b> the best reel gets ad money</p>
+      </div>
+    </div>
+  </div>
+  <div class="card tbl" style="margin-top:20px;padding:10px 12px">
+    <h3 style="padding:6px 6px 0">The lead tracker (Google Sheet columns)</h3>
+    <table class="plain"><thead><tr><th>Date</th><th>Parent</th><th>Child age</th><th>Source</th><th>Status</th><th>Tour date</th><th>Outcome</th><th>Notes</th></tr></thead>
+    <tbody><tr class="muted"><td class="tab">12 Jan</td><td>First name</td><td>18 months</td><td>IG reel ad</td><td>Tour booked</td><td class="tab">15 Jan</td><td>Enrolled</td><td>Wants Sept start</td></tr></tbody></table>
+    <p class="muted" style="font-size:.85rem;padding:6px">Status options: New · Contacted · Tour booked · Visited · Offered · Enrolled · Not now · Lost. Keep it private and follow your data policy.</p>
+  </div>
+</section>
+
+<!-- 15 NINETY DAYS -->
+<section class="block" id="ninety">
+  <div class="sec-head">
+    <div class="badge" style="background:var(--leaf-t);color:var(--ink)"><svg><use href="#i-rocket"/></svg></div>
+    <div><p class="time">4:30 · Home Time</p><h2>The first 90 days</h2></div>
+  </div>
+  <p class="sec-intro">Tick as you go. Your ticks stay in this browser only.</p>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+  <p class="hand muted" id="progLbl" style="margin-top:6px">0 of 24 done</p>
+  <div class="grid g3" style="margin-top:18px" id="phases"></div>
+</section>
+
+<footer class="foot">
+  <p><b>Sources for dates, facts and rules:</b>
+    <a href="https://gulfnews.com/living-in-uae/education/uae-school-calendar-2026-27-term-dates-and-holidays-1.500637553" target="_blank" rel="noopener">UAE school calendar 2026–27 (Gulf News)</a> ·
+    <a href="https://www.khaleejtimes.com/uae/ramadan-eid-al-fitr-eid-al-adha-2027-likely-dates" target="_blank" rel="noopener">Ramadan &amp; Eid 2027 expected dates (Khaleej Times)</a> ·
+    <a href="https://platinumlist.net/guide/all-details-on-advertising-permit-for-uae-influencers-and-content-creators/" target="_blank" rel="noopener">Advertiser permit</a> ·
+    <a href="https://www.clydeco.com/en/insights/2026/01/uae-issues-landmark-child-digital-safety-law" target="_blank" rel="noopener">Child Digital Safety Law (Clyde &amp; Co)</a> ·
+    <a href="https://gulfnews.com/amp/story/living-in-uae%2Feducation%2Fuae-school-photos-without-consent-privacy-rules-1.500699338" target="_blank" rel="noopener">Photo consent &amp; Article 44 (Gulf News)</a> ·
+    <a href="https://mohap.gov.ae/en/w/mother-s-day" target="_blank" rel="noopener">UAE Mother's Day (MOHAP)</a> ·
+    <a href="https://mediaoffice.ae/en/news/2025/october/02-10/dubai-early-childhood-sector-sees-continued-growth-with-8-percent-rise-in-enrolment" target="_blank" rel="noopener">Dubai early childhood figures (Dubai Media Office / KHDA)</a> ·
+    <a href="https://datareportal.com/reports/digital-2026-united-arab-emirates" target="_blank" rel="noopener">Digital 2026: UAE (DataReportal)</a> ·
+    <a href="https://www.khaleejtimes.com/uae/uae-president-announces-2026-as-year-of-family?amp=1" target="_blank" rel="noopener">2026 Year of the Family (Khaleej Times)</a>
+  </p>
+  <p>Budgets, targets and costs are planning guides, not guarantees. Adjust them to your branch after month 1.</p>
+</footer>
+</div>
+
+<script>
+(function(){
+const P = {
+  learn:{n:"Little Learners",c:"var(--sun)",t:"var(--sun-t)"},
+  safe:{n:"Safe Hands",c:"var(--sky)",t:"var(--sky-t)"},
+  grown:{n:"Our Grown-ups",c:"var(--grape)",t:"var(--grape-t)"},
+  parent:{n:"Parent Corner",c:"var(--leaf)",t:"var(--leaf-t)"},
+  happy:{n:"Happy Days",c:"var(--tomato)",t:"var(--tomato-t)"},
+  come:{n:"Come & See",c:"var(--pink)",t:"var(--pink-t)"}
+};
+
+/* ---------- calendar ---------- */
+const months = [
+ {m:"Jan",y:"2027",theme:"New year, new routines",heat:"tomato",dates:[["1 Jan","New Year's Day","world"],["4 Jan","Term restarts","school"],["24 Jan","International Day of Education","world"],["~24 Jan","Haq Al Laila (expected)","uae"]],
+  posts:"\"A day in 60 seconds\", room tours, curriculum explainers, parent reviews. Parents start deciding on September places now.",
+  act:"Big Open Morning: stay & play for new families. Capped spots, booked on WhatsApp."},
+ {m:"Feb",y:"2027",theme:"A kinder month",heat:"tomato",dates:[["~6 Feb","Lunar New Year","faith"],["~8 Feb","Ramadan begins (expected)","faith"],["21 Feb","International Mother Language Day","world"],["~26 Feb","Zayed Humanitarian Day","uae"]],
+  posts:"Ramadan kindness calendar, gentle routines, lantern crafts, Ramadan timings, \"hello\" in every home language in the class.",
+  act:"30 Little Kindnesses: a daily kindness card for families, ending with a food or book donation drive."},
+ {m:"Mar",y:"2027",theme:"Readers, mums & happy hearts",heat:"tomato",dates:[["Mar","UAE Reading Month","uae"],["4 Mar","World Book Day (UK)","world"],["~9–10 Mar","Eid Al Fitr (expected)","faith"],["15 Mar","Emirati Children's Day","uae"],["20 Mar","Day of Happiness","world"],["21 Mar","UAE Mother's Day","uae"],["21 Mar","World Down Syndrome Day","world"],["22 Mar","World Water Day","world"],["27 Mar","Earth Hour","world"],["28 Mar","Easter","faith"]],
+  posts:"Bedtime story lives, book character day, \"Mum, by me\" drawings, Eid cards, odd-socks day for World Down Syndrome Day.",
+  act:"Bedtime Story Live: a teacher reads live on Instagram at 7pm. Families join from the sofa."},
+ {m:"Apr",y:"2027",theme:"Little gardeners",heat:"sun",dates:[["2 Apr","World Autism Awareness Day","world"],["2 Apr","International Children's Book Day","world"],["5–11 Apr","Spring break","school"],["7 Apr","World Health Day","world"],["22 Apr","Earth Day","world"],["23 Apr","World Book Day (UNESCO)","world"]],
+  posts:"Every Child Belongs week, planting and growing, healthy habits, spring camp, outdoor play before the heat.",
+  act:"Grow-Along: every child plants a seed. Families post its progress with your hashtag."},
+ {m:"May",y:"2027",theme:"Families & sports",heat:"sun",dates:[["15 May","International Day of Families","world"],["~16–17 May","Eid Al Adha (expected)","faith"],["20 May","World Bee Day","world"],["May","Summer camp sign-ups","school"]],
+  posts:"Mini sports day, family portraits, hydration hero chart, heat-safety rules, summer camp preview, buzzy bee crafts.",
+  act:"Mini Sports Day, early in the month and early in the morning. Grandparents' race optional but encouraged."},
+ {m:"Jun",y:"2027",theme:"Caps, gowns & dads",heat:"sun",dates:[["1 Jun","Global Day of Parents","world"],["5 Jun","World Environment Day","world"],["~6 Jun","Hijri New Year (expected)","faith"],["8 Jun","World Oceans Day","world"],["21 Jun","Father's Day","uae"],["21 Jun","International Yoga Day","world"],["Jun","Graduations","school"]],
+  posts:"Thank-you-parents post, graduation walk, \"where are they going next\", Dad & Me portraits, kids' yoga.",
+  act:"Graduation Photo Wall: a branded backdrop families share. Best week to ask for Google reviews."},
+ {m:"Jul",y:"2027",theme:"Cool summer fun",heat:"leaf",dates:[["2 Jul","School year ends","school"],["Jul–Aug","Summer camp","school"],["30 Jul","International Day of Friendship","world"]],
+  posts:"Summer camp daily stories, indoor and water play, summer reading list, staff summer training, friendship crafts.",
+  act:"Summer Camp Diaries: one story a day, one theme a week (space, ocean, little chefs)."},
+ {m:"Aug",y:"2027",theme:"See you soon!",heat:"tomato",dates:[["~15 Aug","Prophet's Birthday (expected)","faith"],["28 Aug","Emirati Women's Day","uae"],["Late Aug","New term starts","school"],["Aug","New families arrive","school"]],
+  posts:"Back-to-nursery countdown, \"new to the UAE\" guide, settling-in plan, meet the team, spaces for September.",
+  act:"Meet the Teacher Stay & Play: new families visit before day one. Fewer tears in September."},
+ {m:"Sep",y:"2027",theme:"Hello, new friends",heat:"tomato",dates:[["Sep","Settling-in weeks","school"],["8 Sep","International Literacy Day","world"],["21 Sep","International Day of Peace","world"]],
+  posts:"Settling-in diaries (no tears on camera), meet the class teachers, the bag checklist, \"how we say goodbye at the door\".",
+  act:"First-Day Photo Frame: a branded frame at the gate. Parents take and share their own child's photo."},
+ {m:"Oct",y:"2027",theme:"Teachers, grandparents & clean hands",heat:"sun",dates:[["1 Oct","Day of Older Persons","world"],["5 Oct","World Teachers' Day","world"],["15 Oct","Global Handwashing Day","world"],["16 Oct","World Food Day","world"],["Oct","Mid-term break","school"],["~29 Oct","Diwali","faith"]],
+  posts:"Grandparents' visit, Teacher Week takeover, handwashing song, healthy food week, \"Ready for Big School?\" series (FS1 applications open).",
+  act:"Teacher Takeover: each teacher runs the stories for a day. Parents vote for the funniest moment."},
+ {m:"Nov",y:"2027",theme:"Flags, kindness & wiggles",heat:"sun",dates:[["3 Nov","UAE Flag Day","uae"],["13 Nov","World Kindness Day","world"],["16 Nov","International Day for Tolerance","world"],["20 Nov","World Children's Day","world"],["Nov","Dubai Fitness Challenge","uae"],["30 Nov","Commemoration Day","uae"]],
+  posts:"Little flag-raisers, kindness jar, \"many cultures, one class\", children's rights in kid words, 30-day wiggle challenge.",
+  act:"Little Wiggle Challenge: 30 days of short movement games families copy at home, with a sticker chart."},
+ {m:"Dec",y:"2027",theme:"Proud to be here",heat:"leaf",dates:[["2–3 Dec","Eid Al Etihad (National Day)","uae"],["Mid-Dec","Winter break starts","school"],["18 Dec","Arabic Language Day","uae"],["25 Dec","Christmas","faith"]],
+  posts:"National Day majlis, heritage dress-up, \"one word in Arabic\" series, winter camp, year-end thank you.",
+  act:"The Ghaf Tree Mural: every child adds a painted handprint leaf, unveiled for National Day."}
+];
+const dtype = {uae:"var(--leaf)",world:"var(--sky)",faith:"var(--grape)",school:"var(--sun)"};
+const heatC = {tomato:"var(--tomato)",sun:"var(--sun)",leaf:"var(--leaf)"};
+const heatL = {tomato:"peak push",sun:"steady",leaf:"gentle"};
+const cal = document.getElementById("cal");
+const tints = ["var(--sun-t)","var(--sky-t)","var(--grape-t)","var(--leaf-t)","var(--tomato-t)","var(--pink-t)"];
+cal.innerHTML = months.map((x,i)=>`
+  <article class="month">
+    <header style="background:${tints[i%6]}"><h3>${x.m} <span class="muted" style="font-family:var(--body);font-size:.85rem;font-weight:600">${x.y}</span></h3><span class="theme">${x.theme}</span></header>
+    <div class="body">
+      <div class="dates">${x.dates.map(d=>`<span class="date" style="border-left:5px solid ${dtype[d[2]]}"><b>${d[0]}</b>${d[1]}</span>`).join("")}</div>
+      <p>${x.posts}</p>
+      <div class="act"><p class="lbl" style="color:${heatC[x.heat]}">Activation</p><p style="margin-top:4px">${x.act}</p></div>
+      <div class="heat">Admissions dial <i style="background:${heatC[x.heat]}"></i> ${heatL[x.heat]}</div>
+    </div>
+  </article>`).join("");
+
+/* ---------- budget chart ---------- */
+const bud = [["Jan",4500],["Feb",3500],["Mar",4000],["Apr",3000],["May",2500],["Jun",2500],["Jul",2500],["Aug",3500],["Sep",3000],["Oct",3000],["Nov",2500],["Dec",1500]];
+(function(){
+  const svg = document.getElementById("budgetChart");
+  const W=760,H=290,l=64,r=16,t=28,b=40, max=5000;
+  const cw=(W-l-r)/bud.length, y=v=>t+(H-t-b)*(1-v/max);
+  let s="";
+  for(let v=0; v<=max; v+=1000){ s+=`<line x1="${l}" x2="${W-r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--rule)" stroke-width="2" stroke-dasharray="${v?'4 6':''}"/><text class="soft" x="${l-10}" y="${y(v)+4}" text-anchor="end" font-size="12">${v? (v/1000)+'k':'0'}</text>`; }
+  const col = v=> v>=4000?"var(--tomato)": v>=3000?"var(--sun)":"var(--leaf)";
+  bud.forEach((d,i)=>{
+    const x=l+i*cw+cw*0.18, w=cw*0.64, yy=y(d[1]);
+    s+=`<rect x="${x}" y="${yy}" width="${w}" height="${y(0)-yy}" rx="6" fill="${col(d[1])}" stroke="var(--card-line)" stroke-width="2.5"/>`;
+    s+=`<text x="${x+w/2}" y="${yy-8}" text-anchor="middle" font-size="12" font-weight="700">${(d[1]/1000).toString()}k</text>`;
+    s+=`<text class="soft" x="${x+w/2}" y="${H-b+20}" text-anchor="middle" font-size="13" font-weight="600">${d[0]}</text>`;
+  });
+  s+=`<text class="soft" x="${l}" y="16" font-size="12">AED per month</text>`;
+  s+=`<text x="${l+3*cw+cw*0.3}" y="${y(4500)-6}" font-family="Gochi Hand, cursive" font-size="18" fill="var(--grape)">← September places decided</text>`;
+  svg.innerHTML=s;
+})();
+
+/* ---------- ideas ---------- */
+const I = [
+ // safe
+ ["safe","The 7:30am gate","Film drop-off from the parent's side: door, sign-in, the handover.","Reel",2],
+ ["safe","Who can collect?","Pick-up rules in five simple slides.","Carousel",1],
+ ["safe","The Sparkle Squad","Timelapse of the evening clean, set to a tidy-up song.","Reel",1],
+ ["safe","Bubbles vs germs","The handwashing song. Hands and sink only.","Reel",1],
+ ["safe","Meet the nurse","Her training, and the three things she checks every day.","Photo",1],
+ ["safe","What's in the first-aid box?","Open it up, item by item.","Carousel",1],
+ ["safe","Nap time, explained","How we settle, check and record naps. No sleeping faces.","Carousel",1],
+ ["safe","Day 1 to day 5","The settling-in plan, one slide per day.","Carousel",2],
+ ["safe","When a little one cries","A teacher explains, to camera, how she comforts.","Reel",2],
+ ["safe","The Monday toy check","Weekly safety check of toys and equipment.","Story",1],
+ ["safe","Fire drill heroes","How tiny people practise a drill. Shot from behind.","Photo",1],
+ ["safe","The allergy-aware kitchen","How meals are labelled, checked and served.","Carousel",1],
+ ["safe","Our hot-weather rules","Shade, water, and indoor play times for summer.","Carousel",1],
+ ["safe","Myth or fact: germs","A 5-question story quiz about nursery hygiene.","Story",1],
+ ["safe","Why nobody walks in","Visitor rules, and why they make parents' lives easier.","Photo",1],
+ ["safe","Hydration station","The water-bottle routine, refill by refill.","Story",1],
+ // learn
+ ["learn","Letter of the week","A new letter, sound and object every Monday.","Story",1],
+ ["learn","Messy play, big learning","What a tray of foam teaches. Hands only.","Reel",1],
+ ["learn","Why we play with water","Pouring, measuring and the maths hiding in it.","Carousel",1],
+ ["learn","Threading pasta","Fine motor skills in 15 seconds.","Reel",1],
+ ["learn","Obstacle course day","Balance, climbing and taking turns.","Reel",1],
+ ["learn","Story corner picks","Five books the teachers love this month.","Carousel",1],
+ ["learn","One word, three languages","A teacher says one word in English, Arabic and one more.","Reel",2],
+ ["learn","Counting with dates","Ramadan-friendly numbers using the fruit.","Reel",1],
+ ["learn","Sink or float?","Little scientists make predictions.","Reel",1],
+ ["learn","The art is in the process","Why we never 'fix' a child's drawing.","Carousel",1],
+ ["learn","The role-play market","Buying, counting, chatting, haggling.","Reel",2],
+ ["learn","Nature walk finds","Leaves, stones and what we did with them.","Carousel",1],
+ ["learn","Learned today, in 15 seconds","Teacher voiceover over the day's activity.","Reel",2],
+ ["learn","Circle time song","The song your child keeps singing at home.","Reel",1],
+ ["learn","Ready for big school?","10 skills that matter more than writing your name.","Carousel",1],
+ ["learn","Project of the month","Start, messy middle, proud finish.","Carousel",2],
+ ["learn","Blocks are maths","Building towers is counting, comparing and planning.","Reel",1],
+ ["learn","Scribbles before writing","Why mark-making comes first.","Carousel",1],
+ ["learn","Music & movement","Shakers, scarves and a lot of jumping.","Reel",1],
+ ["learn","Inside a learning journal","An example page, names blurred.","Carousel",1],
+ // grown
+ ["grown","Teacher Tuesday","A photo and three quick questions.","Photo",1],
+ ["grown","Why I teach little ones","A one-minute interview.","Reel",2],
+ ["grown","Meet the manager","Thirty seconds: 'my door is open'.","Reel",1],
+ ["grown","The unsung heroes","Assistants, cleaners, drivers and the chef.","Photo",1],
+ ["grown","Behind the planning","Teachers planning next week's fun.","Reel",1],
+ ["grown","Training day","What the team learned this term.","Carousel",1],
+ ["grown","Teacher's lunchbox hack","Real tips from people who pack hundreds.","Reel",1],
+ ["grown","Ask a teacher","Story Q&A box, answered on camera.","Story",1],
+ ["grown","Ten years on","A long-serving team member's story.","Reel",2],
+ ["grown","Chef's menu of the week","What's cooking, and why it's good for them.","Photo",1],
+ ["grown","How we hire","Checks, qualifications and training. Great for LinkedIn.","Carousel",1],
+ ["grown","Staff favourite books","Each teacher's best-loved children's book.","Story",1],
+ ["grown","Kind bloopers","Teachers being lovely and slightly silly.","Reel",1],
+ ["grown","Thank you, grown-ups","A collage for World Teachers' Day.","Carousel",1],
+ // happy
+ ["happy","Friday smiles","The week's best moments, consented only.","Story",1],
+ ["happy","Our National Day majlis","Heritage dress, dates and a mini majlis.","Reel",2],
+ ["happy","The kindness wall","A Ramadan wall that fills up all month.","Carousel",1],
+ ["happy","Eid cards by little hands","Handprint cards for families.","Reel",1],
+ ["happy","Many festivals, one classroom","Diwali, Christmas, Eid and more, celebrated together.","Carousel",1],
+ ["happy","Sports day highlights","Medals for everyone, slow-motion included.","Reel",2],
+ ["happy","Pyjama day","Exactly what it sounds like.","Photo",1],
+ ["happy","Book character day","Tiny dragons, astronauts and princesses everywhere.","Reel",1],
+ ["happy","The graduation walk","Caps, gowns and proud parents.","Reel",3],
+ ["happy","Birthday crowns","Celebrated with a crown. No full names.","Photo",1],
+ ["happy","Field trip diary","A slide for every stop of the day.","Carousel",2],
+ ["happy","Summer camp daily","One story a day, all summer.","Story",1],
+ ["happy","International day parade","Flags, food and family costumes.","Reel",2],
+ ["happy","Earth Hour lanterns","Craft lanterns for lights-off night.","Photo",1],
+ ["happy","Mum, by me","Mother's Day portraits drawn by the children.","Carousel",1],
+ ["happy","It's raining!","Drop everything and film the rare UAE rain.","Reel",1],
+ // parent
+ ["parent","The nursery bag checklist","What to pack, what to leave at home.","Carousel",1],
+ ["parent","Drop-off without tears (yours)","Tips for the grown-up at the gate.","Carousel",1],
+ ["parent","5-minute lunchboxes","Three ideas, filmed fast.","Reel",1],
+ ["parent","Toilet training truths","What really helps, from people who've seen it all.","Carousel",1],
+ ["parent","Summer sleep routines","Bedtimes that survive late sunsets.","Carousel",1],
+ ["parent","Screen time that works","Simple, guilt-free guidelines.","Carousel",1],
+ ["parent","Better than 'how was your day?'","Pick-up questions that get real answers.","Carousel",1],
+ ["parent","Play with kitchen things","Spoons, pots and cups. No shopping needed.","Reel",1],
+ ["parent","Speech milestones","When to wait and when to ask, with a speech therapist.","Carousel",2],
+ ["parent","The tantrum toolkit","Calm words that actually work.","Carousel",1],
+ ["parent","Ask the nurse, live","A 20-minute live Q&A on everyday health questions.","Live",2],
+ ["parent","Parent app tour","Screen recording with dummy data.","Reel",1],
+ ["parent","Your child's day in 3 updates","What parents receive and when.","Carousel",1],
+ ["parent","Every child belongs","How we support different needs, in plain words.","Carousel",1],
+ ["parent","Picky eater tricks","What the nursery chef does differently.","Reel",1],
+ ["parent","New to the UAE with little ones","A starter guide for new families.","Carousel",1],
+ ["parent","Questions to ask any nursery","An honest checklist. Yes, even for us.","Carousel",1],
+ ["parent","Coffee morning recap","What parents asked, and our answers.","Photo",1],
+ // come
+ ["come","Room by room","A walking tour of the whole nursery.","Reel",2],
+ ["come","The reading nook","A cosy corner and why it's there.","Photo",1],
+ ["come","Shade and outdoor play","How we play outside in the UAE climate.","Reel",1],
+ ["come","The baby room walk-through","Cots, feeding, changing area, calm colours.","Reel",2],
+ ["come","A day in 60 seconds","Arrival to pick-up, as a fast timeline.","Reel",2],
+ ["come","Open morning invite","A post plus a story countdown.","Photo",1],
+ ["come","Parent review card","A real Google review, first name only, with permission.","Photo",1],
+ ["come","Why we chose here","A parent explains, on camera.","Reel",3],
+ ["come","Timings and ages","Who we take and when we're open.","Carousel",1],
+ ["come","FAQ Friday","One real question answered each week.","Story",1],
+ ["come","Google photo refresh","Ten new photos on your Google profile every month.","GBP",1],
+ ["come","Find us from the landmark","Directions from a place everyone knows.","Carousel",1],
+ ["come","What's included","Meals, activities, updates: the full list.","Carousel",1],
+ ["come","Tour with the manager","A live or recorded walk-and-talk.","Live",2],
+ ["come","Where are they now?","Graduates' parents share the next step.","Reel",2],
+ ["come","Spaces for September","A soft, honest 'we have room' reel.","Reel",1]
+];
+const filters = document.getElementById("filters"), grid = document.getElementById("ideas"), countLbl=document.getElementById("countLbl");
+let cur="all";
+const keys=["all",...Object.keys(P)];
+filters.innerHTML = keys.map(k=>`<button type="button" data-k="${k}" aria-pressed="${k==='all'}">${k==='all'?'All 100':P[k].n}</button>`).join("");
+function crayons(n){ return `<span class="crayons" title="Effort ${n} of 3">${[1,2,3].map(i=>`<i class="${i<=n?'on':''}"></i>`).join("")}</span>`; }
+function card(d,i){ const p=P[d[0]]; return `<article class="idea" id="idea-${i}" style="border-top:7px solid ${p.c}">
+  <span class="num tab">#${i+1} · <span style="color:${p.c};font-family:var(--body);font-weight:700;font-size:.78rem">${p.n}</span></span>
+  <h4>${d[1]}</h4><p>${d[2]}</p>
+  <footer><span class="fmt">${d[3]}</span>${crayons(d[4])}</footer></article>`; }
+function render(){
+  const list = I.map((d,i)=>[d,i]).filter(([d])=>cur==="all"||d[0]===cur);
+  grid.innerHTML = list.map(([d,i])=>card(d,i)).join("");
+  countLbl.textContent = cur==="all" ? "Showing all 100" : `Showing ${list.length} · ${P[cur].n}`;
+}
+filters.addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; cur=b.dataset.k;
+  filters.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed", x===b)); render(); });
+render();
+const pickCard=document.getElementById("pickCard");
+document.getElementById("pickBtn").addEventListener("click",()=>{
+  const pool = I.map((d,i)=>[d,i]).filter(([d])=>cur==="all"||d[0]===cur);
+  const [d,i] = pool[Math.floor(Math.random()*pool.length)];
+  const p=P[d[0]];
+  pickCard.className="pick card show";
+  pickCard.style.background=p.t;
+  pickCard.innerHTML=`<p class="hand" style="color:${p.c}">Today's pick is #${i+1}</p><h3 style="font-size:1.8rem;margin-top:4px">${d[1]}</h3><p style="margin-top:6px">${d[2]}</p><p class="muted" style="margin-top:8px;font-size:.9rem">${p.n} · ${d[3]} · effort ${d[4]} of 3</p>`;
+  const el=document.getElementById("idea-"+i); if(el){ el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); }
+});
+
+
+/* ---------- campaigns ---------- */
+const C = [
+ ["First Day, Big Smiles","Aug – Sep","happy","Settle new families with less worry.","Day 1–5 carousel, settling-in diaries, meet the teachers.","Book a meet-the-teacher visit"],
+ ["Safe Hands, Happy Hearts","Always on · push in Jan","safe","Prove safety and care, again and again.","The 7:30am gate, meet the nurse, the evening clean.","Come and see it for yourself"],
+ ["Ready for Big School","Oct – Jan","learn","Win parents of 3-year-olds thinking about FS1.","10 skills carousel, alumni stories, teacher Q&A.","Get our readiness checklist on WhatsApp"],
+ ["Come & Play Mornings","Jan – Mar · Aug","come","Turn interest into visits at peak decision time.","Invite posts, story countdowns, recap reels.","Book your spot on WhatsApp"],
+ ["Little Readers Club","March","learn","Own UAE Reading Month in your area.","Bedtime story lives, book picks, character day.","Join the live at 7pm"],
+ ["Kindness Counts","Feb (Ramadan) · Nov","happy","Show values families share.","30 Little Kindnesses, donation drive, Kindness Day.","Join in at home"],
+ ["Every Child Belongs","April","parent","Reassure parents of children who need extra support.","How support works, an expert live, inclusion lead intro.","Talk privately with our inclusion lead"],
+ ["Cool Summer Club","May – Aug","come","Fill summer camp and keep families through summer.","Themed weeks, hydration hero, daily camp stories.","Register for summer camp"]
+];
+document.getElementById("camps").innerHTML = C.map(c=>{ const p=P[c[2]]; return `<div class="card" style="border-top:8px solid ${p.c}">
+  <p class="hand" style="color:${p.c}">${c[1]}</p><h3 style="margin-top:4px">${c[0]}</h3>
+  <p style="margin-top:8px;font-size:.92rem"><b>Goal:</b> ${c[3]}</p>
+  <p style="margin-top:6px;font-size:.92rem"><b>Hero posts:</b> ${c[4]}</p>
+  <p style="margin-top:10px;font-size:.88rem;background:${p.t};border-radius:10px;padding:6px 10px"><b>Ask:</b> "${c[5]}"</p></div>`; }).join("");
+
+/* ---------- activations ---------- */
+const A = [
+ ["Stay & Play Open Mornings","Monthly, capped at 8–10 families, booked on WhatsApp. Teachers lead a real activity.","Snacks and printing","happy"],
+ ["Teacher Takeover","One teacher runs the stories for a day. Personality sells trust.","Free","grown"],
+ ["Bedtime Story Live","A teacher reads live at 7pm once a month. Families join from the sofa.","Free","learn"],
+ ["Expert Parent Workshop","A local paediatric dentist, speech therapist or nutritionist hosts. They bring knowledge, you bring parents. Shared collab post.","Free to low","parent"],
+ ["The Handprint Mural","A wall every child adds to, unveiled for National Day. It stays as a photo backdrop all year.","Paint and a wall","happy"],
+ ["Community Story Corner","A reading corner at a residential community event or family market, with the organiser's permission.","Books, mats, banner","come"],
+ ["Book Swap Week","Families bring a book and take a book. Leftovers go to charity.","Free","learn"],
+ ["Grow-Along Challenge","Every child plants a seed. Families post its progress at home.","Seeds and cups","learn"],
+ ["Graduation Photo Wall","A branded backdrop. Families share photos, and you ask for Google reviews the same week.","Backdrop print","happy"],
+ ["The Nursery Bag Checklist","A free printable sent by WhatsApp. Useful to parents, and it starts a conversation.","Free","parent"],
+ ["Micro-creator Family Visit","2–3 local parent creators a year visit and share honestly. Check their advertiser permit first.","Small fee or none","come"],
+ ["Bring a Buddy Thank-you","When a family refers a friend who joins, send a thank-you gift such as a book. Check fee rules before any fee discount.","Low","come"]
+];
+document.getElementById("acts").innerHTML = A.map((a,i)=>{ const p=P[a[3]]; return `<div class="card" style="position:relative">
+  <span class="chip" style="background:${p.t}">${p.n}</span>
+  <h3 style="margin-top:12px">${a[0]}</h3><p style="margin-top:6px;font-size:.95rem">${a[1]}</p>
+  <p class="hand" style="margin-top:10px;color:${p.c}">Cost: ${a[2]}</p></div>`; }).join("");
+
+/* ---------- 90 days ---------- */
+const PH = [
+ ["Days 1–30","Set up the classroom","var(--sky)",[
+   "Audit every channel: what exists, who has the passwords","Fix bios, links and highlights (Tour, Safety, Learning, Team, Reviews, FAQs)","Claim and complete Google Business Profile for every branch","Set up WhatsApp Business: greeting, quick replies, labels","Refresh photo consent forms with the 3 options","Make the class photo lists","Build 6 Canva templates, one per building block","Start the lead tracker and record the baseline numbers"]],
+ ["Days 31–60","Start the routine","var(--sun)",[
+   "Post the weekly timetable, 6 posts a week incl. scheduled weekends, no gaps","Launch Teacher Tuesday and Behind the Gate series","Daily stories on 5 days","Ask 10 happy families for Google reviews","Train the content champions (one 30-minute session)","Run the first Starter ads: one click-to-WhatsApp","Comment helpfully on local parent pages, 10 minutes a day","First monthly report card"]],
+ ["Days 61–90","Open the doors","var(--leaf)",[
+   "Hold the first Stay & Play Open Morning","Run the open-morning ad campaign","Host the first expert parent workshop","Go live once (story time or ask the nurse)","Boost the 2 best reels from month 2","Review the numbers: keep, stop, try, boost","Plan the next 3 months from the wall chart","Decide: stay on Starter or move to Growth budget"]]
+];
+const phases=document.getElementById("phases"); let saved={};
+try{ saved=JSON.parse(localStorage.getItem("nsp90")||"{}"); }catch(e){ saved={}; }
+phases.innerHTML = PH.map((ph,pi)=>`<div class="card"><p class="chip" style="background:${ph[2]};color:#1E2A44;border-color:var(--card-line)">${ph[0]}</p><h3 style="margin-top:10px">${ph[1]}</h3><div class="phase" style="margin-top:12px">${ph[3].map((t,ti)=>{const id=`t${pi}-${ti}`; return `<label for="${id}"><input type="checkbox" id="${id}" ${saved[id]?'checked':''}><span>${t}</span></label>`;}).join("")}</div></div>`).join("");
+function prog(){ const all=phases.querySelectorAll("input"), done=[...all].filter(x=>x.checked).length;
+  document.getElementById("prog").style.width=(done/all.length*100)+"%"; document.getElementById("progLbl").textContent=`${done} of ${all.length} done${done===all.length?' · gold star!':''}`; }
+phases.addEventListener("change",e=>{ if(e.target.matches("input")){ saved[e.target.id]=e.target.checked; try{ localStorage.setItem("nsp90",JSON.stringify(saved)); }catch(err){} prog(); }});
+prog();
+})();
+</script>
+
+</body>
+</html>
